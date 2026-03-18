@@ -1,0 +1,2 @@
+VCD info: dumpfile FIFO.vcd opened for output.
+FIFO_TOP_TOP_TB.v:44: $finish called at 160 (1s)
