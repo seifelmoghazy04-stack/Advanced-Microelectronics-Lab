@@ -1,0 +1,62 @@
+#include <stdint.h>
+#include <stdio.h>
+uint32_t alu32(uint32_t A, uint32_t B, uint8_t opcode) {
+    uint32_t result = 0;
+    switch(opcode) {
+        case 0:  // ADD
+            result = A + B;
+            break;
+        case 1:  // SUB
+            result = A - B;
+            break;
+        case 2:  // MUL
+            result = A * B;
+            break;
+        case 3:  // AND
+            result = A & B;
+            break;
+        case 4:  // OR
+            result = A | B;
+            break;
+        case 5:  // XOR
+            result = A ^ B;
+            break;
+        case 6:  // SHIFT LEFT
+            result = A << 1;
+            break;
+        case 7:  // SHIFT RIGHT (Logical)
+            result = A >> 1;
+            break;
+        default:
+            result = 0;
+            break;}
+    return result;
+}
+
+    int main() {
+
+    uint32_t A = 10;
+    uint32_t B = 5;
+    uint32_t result = alu32(A, B, 0);   // ADD
+    uint32_t result1 = alu32(A, B, 1);  // SUB
+    uint32_t result2 = alu32(A, B, 2);  // MUL
+    uint32_t result3 = alu32(A, B, 3);  // AND
+    uint32_t result4 = alu32(A, B, 4);  // OR
+    uint32_t result5 = alu32(A, B, 5);  // XOR
+    uint32_t result6 = alu32(A, B, 6);  // SHIFTLEFT
+    uint32_t result7 = alu32(A, B, 7);  // SHIFTRIGHT
+    uint32_t result8 = alu32(A, B, 25); // OTHER
+
+    printf("Result = %u\n", result);
+    printf("Result = %u\n", result1);
+    printf("Result = %u\n", result2);
+    printf("Result = %u\n", result3);
+    printf("Result = %u\n", result4);
+    printf("Result = %u\n", result5);
+    printf("Result = %u\n", result6);
+    printf("Result = %u\n", result7);
+    printf("Result = %u\n", result8);
+
+
+    return 0;
+}
