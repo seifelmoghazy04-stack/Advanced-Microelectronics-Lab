@@ -1,0 +1,11 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,axi_vip_v1_1_7;processing_system7_vip_v1_0_9;xilinx_vip,,,,,,
+D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.srcs/sim_1/new/MAC_hls.vhd,1772639565,vhdl,,,,mac_hls_tb,,,,,,,,
+D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.srcs/sources_1/new/MAC.vhd,1771678980,vhdl,D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.srcs/sources_1/new/MAC_tb.vhd,,,mac,,,,,,,,
+D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.srcs/sources_1/new/MAC_tb.vhd,1771678796,vhdl,,,,mac_tb,,,,,,,,
+D:/Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls.vhd,1772641079,vhdl,D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.srcs/sim_1/new/MAC_hls.vhd,,,mac_hls,,,,,,,,
+D:/Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls_mac_muladd_8s_8s_32ns_32_4_1.vhd,1772638943,vhdl,,,,mac_hls_mac_muladd_8s_8s_32ns_32_4_1;mac_hls_mac_muladd_8s_8s_32ns_32_4_1_dsp48_0,,,,,,,,
+D:/Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls_mux_42_8_1_1.vhd,1772638943,vhdl,,,,mac_hls_mux_42_8_1_1,,,,,,,,

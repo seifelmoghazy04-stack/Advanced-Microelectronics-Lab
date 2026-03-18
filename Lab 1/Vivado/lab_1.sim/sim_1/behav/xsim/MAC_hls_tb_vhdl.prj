@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../../../Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls.vhd" \
+"../../../../../../../../Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls_mac_muladd_8s_8s_32ns_32_4_1.vhd" \
+"../../../../../../../../Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls_mux_42_8_1_1.vhd" \
+"../../../../lab_1.srcs/sim_1/new/MAC_hls.vhd" \
+
+# Do not sort compile order
+nosort

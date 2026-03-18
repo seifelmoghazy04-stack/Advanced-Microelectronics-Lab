@@ -1,0 +1,21 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto 726b6e1ee08a465184ea818b8f862154 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot MAC_hls_tb_behav xil_defaultlib.MAC_hls_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling module xil_defaultlib.glbl
+Compiling architecture rtl of entity xil_defaultlib.MAC_hls_mux_42_8_1_1 [\MAC_hls_mux_42_8_1_1(id=1,din0_...]
+Compiling architecture behav of entity xil_defaultlib.MAC_hls_mac_muladd_8s_8s_32ns_32_4_1_DSP48_0 [mac_hls_mac_muladd_8s_8s_32ns_32...]
+Compiling architecture arch of entity xil_defaultlib.MAC_hls_mac_muladd_8s_8s_32ns_32_4_1 [\MAC_hls_mac_muladd_8s_8s_32ns_3...]
+Compiling architecture behav of entity xil_defaultlib.MAC_hls [mac_hls_default]
+Compiling architecture sim of entity xil_defaultlib.mac_hls_tb
+Built simulation snapshot MAC_hls_tb_behav

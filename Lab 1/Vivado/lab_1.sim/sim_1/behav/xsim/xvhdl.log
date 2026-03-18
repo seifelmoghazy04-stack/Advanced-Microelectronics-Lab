@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/Vitis/soc_task_1/solution1/syn/vhdl/MAC_hls.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'MAC_hls'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.srcs/sim_1/new/MAC_hls.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'MAC_hls_tb'
