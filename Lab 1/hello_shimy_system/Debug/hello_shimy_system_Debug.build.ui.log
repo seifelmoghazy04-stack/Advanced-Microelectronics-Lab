@@ -1,0 +1,10 @@
+2026-02-22T09:02:10.506107100255-09:02:10 **** Build of configuration Debug for project hello_shimy_system ****
+000-make all 
+000-Generating bif file for the system project
+000-generate_system_bif.bat 50271 D:/Vitis/lab_1_task_1/export/lab_1_task_1/lab_1_task_1.xpfm standalone_domain D:/Vitis/hello_shimy_system/Debug/system.bif
+000-sdcard_gen --xpfm D:/Vitis/lab_1_task_1/export/lab_1_task_1/lab_1_task_1.xpfm --sys_config lab_1_task_1 --bif D:/Vitis/hello_shimy_system/Debug/system.bif --bitstream D:/Vitis/hello_shimy/_ide/bitstream/task_1_wrapper.bit --elf D:/Vitis/hello_shimy/Debug/hello_shimy.elf,ps7_cortexa9_0
+000-creating BOOT.BIN using D:/Vitis/hello_shimy/_ide/bitstream/task_1_wrapper.bit
+000-Running C:/Xilinx/Vitis/2020.1/bin/bootgen  -image D:/Vitis/hello_shimy_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+00255-
+09:02:15 Build Finished (took 4s.681ms)
+

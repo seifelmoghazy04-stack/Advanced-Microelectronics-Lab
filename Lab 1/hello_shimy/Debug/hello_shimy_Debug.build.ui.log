@@ -1,0 +1,49 @@
+2026-02-22T09:02:07.794897500255-09:02:07 **** Build of configuration Debug for project hello_shimy ****
+000-make all 
+000-make --no-print-directory pre-build
+000-a9-linaro-pre-build-step
+000-' '
+000-make --no-print-directory main-build
+000-'Building file: ../src/helloworld.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+000-'Finished building: ../src/helloworld.c'
+000-' '
+000-'Building file: ../src/main.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+000-In file included from ../src/main.c:4:
+000/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include/xtime_l.h65-1-1#pragma message: For the sleep routines, Global timer is being used0-D:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include/xtime_l.h:65:9: note: #pragma message: For the sleep routines, Global timer is being used
+000-   65 | #pragma message ("For the sleep routines, Global timer is being used")
+000-      |         ^~~~~~~
+000-'Finished building: ../src/main.c'
+000-' '
+000-'Building file: ../src/network.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/network.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include -MMD -MP -MF"src/network.d" -MT"src/network.o" -o "src/network.o" "../src/network.c"
+000-'Finished building: ../src/network.c'
+000-' '
+000-'Building file: ../src/platform.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+000-'Finished building: ../src/platform.c'
+000-' '
+000-'Building file: ../src/preprocess.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/preprocess.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bspinclude/include -MMD -MP -MF"src/preprocess.d" -MT"src/preprocess.o" -o "src/preprocess.o" "../src/preprocess.c"
+000-'Finished building: ../src/preprocess.c'
+000-' '
+000-'Building target: hello_shimy.elf'
+000-'Invoking: ARM v7 gcc linker'
+000-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LD:/Vitis/lab_1_task_1/export/lab_1_task_1/sw/lab_1_task_1/standalone_domain/bsplib/lib -o "hello_shimy.elf"  ./src/helloworld.o ./src/main.o ./src/network.o ./src/platform.o ./src/preprocess.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+000-'Finished building target: hello_shimy.elf'
+000-' '
+000-'Invoking: ARM v7 Print Size'
+000-arm-none-eabi-size hello_shimy.elf  |tee "hello_shimy.elf.size"
+000-   text	   data	    bss	    dec	    hex	filename
+000- 217560	   1144	 146088	 364792	  590f8	hello_shimy.elf
+000-'Finished building: hello_shimy.elf.size'
+000-' '
+00255-
+09:02:10 Build Finished (took 2s.206ms)
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="hello_shimy" location="D:/Vitis/hello_shimy" platform="D:/Vitis/lab_1_task_1/export/lab_1_task_1/lab_1_task_1.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="hello_shimy_system" sysConfig="lab_1_task_1" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="f96b7faeb1cb9bfbc1b96d0413334fcf">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.966041610">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1638634057" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

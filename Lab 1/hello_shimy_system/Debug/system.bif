@@ -1,0 +1,7 @@
+/*lab_1_task_1*/
+the_ROM_image:
+{
+ [bootloader] <lab_1_task_1/boot/fsbl.elf>
+ <bitstream>
+ <elf,ps7_cortexa9_0>
+}
