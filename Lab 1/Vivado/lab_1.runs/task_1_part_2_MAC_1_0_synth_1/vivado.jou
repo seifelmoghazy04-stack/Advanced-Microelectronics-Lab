@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sun Feb 22 14:46:11 2026
+# Process ID: 13572
+# Current directory: D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.runs/task_1_part_2_MAC_1_0_synth_1
+# Command line: vivado.exe -log task_1_part_2_MAC_1_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source task_1_part_2_MAC_1_0.tcl
+# Log file: D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.runs/task_1_part_2_MAC_1_0_synth_1/task_1_part_2_MAC_1_0.vds
+# Journal file: D:/University Stuff/Vivado/10th Lab/lab_1/lab_1.runs/task_1_part_2_MAC_1_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source task_1_part_2_MAC_1_0.tcl -notrace
