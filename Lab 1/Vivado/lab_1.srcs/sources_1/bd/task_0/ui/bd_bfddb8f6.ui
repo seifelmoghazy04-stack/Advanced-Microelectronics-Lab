@@ -1,0 +1,46 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.582522",
+   "Default View_TopLeft":"-361,-96",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1580 -y -360 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1580 -y -330 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x -210 -y -10 -defaultsOSRD
+preplace inst MAC_0 -pg 1 -lvl 4 -x 1060 -y -30 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 760 -y -50 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 3 -x 760 -y -190 -defaultsOSRD
+preplace inst axi_gpio_2 -pg 1 -lvl 3 -x 760 -y 230 -defaultsOSRD
+preplace inst axi_gpio_3 -pg 1 -lvl 3 -x 760 -y 370 -defaultsOSRD
+preplace inst axi_gpio_4 -pg 1 -lvl 5 -x 1400 -y -30 -defaultsOSRD
+preplace inst axi_gpio_5 -pg 1 -lvl 5 -x 1400 -y 120 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 2 -x 250 -y 50 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 250 -y -250 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -410 130 10 -380 470 -290 940 -140 1180
+preplace netloc axi_gpio_0_gpio_io_o 1 3 1 910 -40n
+preplace netloc axi_gpio_1_gpio_io_o 1 3 1 920 -180n
+preplace netloc axi_gpio_2_gpio_io_o 1 3 1 920 0n
+preplace netloc axi_gpio_3_gpio_io_o 1 3 1 940 20n
+preplace netloc MAC_0_res 1 4 2 1210J -110 1550
+preplace netloc MAC_0_done 1 4 2 1200 -120 1560
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 4 30 -370 430 -270 930J -150 1190
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 -10 -270n
+preplace netloc processing_system7_0_FIXED_IO 1 1 5 0J -350 NJ -350 940J -330 NJ -330 NJ
+preplace netloc processing_system7_0_DDR 1 1 5 -20J -360 NJ -360 NJ -360 NJ -360 NJ
+preplace netloc axi_interconnect_0_M02_AXI 1 2 1 460 40n
+preplace netloc axi_interconnect_0_M03_AXI 1 2 1 420 60n
+preplace netloc axi_interconnect_0_M01_AXI 1 2 1 450 -210n
+preplace netloc axi_interconnect_0_M04_AXI 1 2 3 440 -280 NJ -280 1220J
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 20 -110n
+preplace netloc axi_interconnect_0_M00_AXI 1 2 1 460 -70n
+preplace netloc axi_interconnect_0_M05_AXI 1 2 3 N 100 NJ 100 NJ
+levelinfo -pg 1 -430 -210 250 760 1060 1400 1580
+pagesize -pg 1 -db -bbox -sgen -430 -470 1690 450
+"
+}
+{
+   "da_axi4_cnt":"6",
+   "da_clkrst_cnt":"1",
+   "da_ps7_cnt":"1"
+}
