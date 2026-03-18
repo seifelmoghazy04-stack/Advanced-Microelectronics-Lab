@@ -1,0 +1,8 @@
+2026-02-22T15:04:55.869105300255-15:04:55 **** Clean-only build of configuration Debug for project conv_read_system ****
+000-make clean 
+000-rm -rf ./_sds
+000-rm -rf package
+000-rm -f system.bif
+00255-
+15:04:55 Build Finished (took 105ms)
+
