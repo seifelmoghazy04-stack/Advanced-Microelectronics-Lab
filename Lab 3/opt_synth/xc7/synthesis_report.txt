@@ -1,0 +1,1395 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.57+218 (git sha1 7ebd97216, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+
+-- Running command `
+    # 1. Read the input Verilog design
+    read_verilog "Lab03/nr_divider_18bit_pipelined.v"
+
+    # 2. Elaborate the design hierarchy using the specified top module
+    hierarchy -check -top nr_divider_18bit_pipelined
+    
+    proc
+    opt
+    opt_clean
+
+    # 3. Show design hierarchy visualization
+    show -format dot -prefix Lab03/opt_synth/xc7//netlist_view
+    show
+
+    # 4. Perform high-level synthesis targeting xc7 FPGAs
+    synth_xilinx -family xc7 -top nr_divider_18bit_pipelined
+
+    # 5. Clean up unused cells and wires
+    clean
+
+    # 6. Write the final synthesized netlist to the target location
+    write_verilog "Lab03/opt_synth/xc7//netlist.v"
+' --
+
+1. Executing Verilog-2005 frontend: Lab03/nr_divider_18bit_pipelined.v
+Parsing Verilog input from `Lab03/nr_divider_18bit_pipelined.v' to AST representation.
+verilog frontend filename Lab03/nr_divider_18bit_pipelined.v
+Generating RTLIL representation for module `\nr_divider_18bit_pipelined'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+
+2.2. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 5 switch rules as full_case in process $proc$Lab03/nr_divider_18bit_pipelined.v:59$11 in module nr_divider_18bit_pipelined.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 0 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~4 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+     1/13: $0\valid_out[0:0]
+     2/13: $0\stg3_valid[0:0]
+     3/13: $0\stg2_valid[0:0]
+     4/13: $0\stg1_valid[0:0]
+     5/13: $0\stg3_X2[17:0]
+     6/13: $0\stg3_A[17:0]
+     7/13: $0\stg2_X1[17:0]
+     8/13: $0\stg2_D[17:0]
+     9/13: $0\stg2_A[17:0]
+    10/13: $0\stg1_X0[17:0]
+    11/13: $0\stg1_D[17:0]
+    12/13: $0\stg1_A[17:0]
+    13/13: $0\quotient_Y[17:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\nr_divider_18bit_pipelined.\quotient_Y' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$61' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\valid_out' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$66' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_A' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$71' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_D' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$76' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_X0' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$81' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_valid' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$86' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_A' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$91' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_D' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$96' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_X1' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$101' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_valid' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$106' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg3_A' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$111' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg3_X2' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$116' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg3_valid' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$121' with positive edge clock and positive level reset.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+Removing empty process `nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+Cleaned up 4 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+<suppressed ~32 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+<suppressed ~36 debug messages>
+Removed a total of 12 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$91 ($adff) from module nr_divider_18bit_pipelined (D = \stg1_A, Q = \stg2_A).
+Adding EN signal on $procdff$71 ($adff) from module nr_divider_18bit_pipelined (D = \dividend_A, Q = \stg1_A).
+Adding EN signal on $procdff$116 ($adff) from module nr_divider_18bit_pipelined (D = $sshr$Lab03/nr_divider_18bit_pipelined.v:95$16_Y [17:0], Q = \stg3_X2).
+Adding EN signal on $procdff$101 ($adff) from module nr_divider_18bit_pipelined (D = $sshr$Lab03/nr_divider_18bit_pipelined.v:84$15_Y [17:0], Q = \stg2_X1).
+Adding EN signal on $procdff$76 ($adff) from module nr_divider_18bit_pipelined (D = \divisor_D, Q = \stg1_D).
+Adding EN signal on $procdff$111 ($adff) from module nr_divider_18bit_pipelined (D = \stg2_A, Q = \stg3_A).
+Adding EN signal on $procdff$61 ($adff) from module nr_divider_18bit_pipelined (D = $sshr$Lab03/nr_divider_18bit_pipelined.v:105$17_Y [17:0], Q = \quotient_Y).
+Adding EN signal on $procdff$96 ($adff) from module nr_divider_18bit_pipelined (D = \stg1_D, Q = \stg2_D).
+Adding EN signal on $procdff$81 ($adff) from module nr_divider_18bit_pipelined (D = $sub$Lab03/nr_divider_18bit_pipelined.v:72$14_Y [17:0], Q = \stg1_X0).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 11 unused cells and 74 unused wires.
+<suppressed ~12 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+4.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+6. Generating Graphviz representation of design.
+Writing dot description to `Lab03/opt_synth/xc7//netlist_view.dot'.
+Dumping module nr_divider_18bit_pipelined to page 1.
+
+7. Generating Graphviz representation of design.
+Writing dot description to `/home/belal/.yosys_show.dot'.
+Dumping module nr_divider_18bit_pipelined to page 1.
+Exec: { test -f '/home/belal/.yosys_show.dot.pid' && fuser -s '/home/belal/.yosys_show.dot.pid' 2> /dev/null; } || ( echo $$ >&3; exec xdot '/home/belal/.yosys_show.dot'; ) 3> '/home/belal/.yosys_show.dot.pid' &
+
+8. Executing SYNTH_XILINX pass.
+
+8.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/cells_sim.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/cells_sim.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/cells_sim.v
+Generating RTLIL representation for module `\VCC'.
+Generating RTLIL representation for module `\GND'.
+Generating RTLIL representation for module `\IBUF'.
+Generating RTLIL representation for module `\IBUFG'.
+Generating RTLIL representation for module `\OBUF'.
+Generating RTLIL representation for module `\IOBUF'.
+Generating RTLIL representation for module `\OBUFT'.
+Generating RTLIL representation for module `\BUFG'.
+Generating RTLIL representation for module `\BUFGCTRL'.
+Generating RTLIL representation for module `\BUFHCE'.
+Generating RTLIL representation for module `\INV'.
+Generating RTLIL representation for module `\LUT1'.
+Generating RTLIL representation for module `\LUT2'.
+Generating RTLIL representation for module `\LUT3'.
+Generating RTLIL representation for module `\LUT4'.
+Generating RTLIL representation for module `\LUT5'.
+Generating RTLIL representation for module `\LUT6'.
+Generating RTLIL representation for module `\LUT6_2'.
+Generating RTLIL representation for module `\$__ABC9_LUT7'.
+Generating RTLIL representation for module `\$__ABC9_LUT8'.
+Generating RTLIL representation for module `\MUXCY'.
+Generating RTLIL representation for module `\MUXF5'.
+Generating RTLIL representation for module `\MUXF6'.
+Generating RTLIL representation for module `\MUXF7'.
+Generating RTLIL representation for module `\MUXF8'.
+Generating RTLIL representation for module `\MUXF9'.
+Generating RTLIL representation for module `\XORCY'.
+Generating RTLIL representation for module `\CARRY4'.
+Generating RTLIL representation for module `\CARRY8'.
+Generating RTLIL representation for module `\ORCY'.
+Generating RTLIL representation for module `\MULT_AND'.
+Generating RTLIL representation for module `\FDRE'.
+Generating RTLIL representation for module `\FDRE_1'.
+Generating RTLIL representation for module `\FDSE'.
+Generating RTLIL representation for module `\FDSE_1'.
+Generating RTLIL representation for module `\FDRSE'.
+Generating RTLIL representation for module `\FDRSE_1'.
+Generating RTLIL representation for module `\FDCE'.
+Generating RTLIL representation for module `\FDCE_1'.
+Generating RTLIL representation for module `\FDPE'.
+Generating RTLIL representation for module `\FDPE_1'.
+Generating RTLIL representation for module `\FDCPE'.
+Generating RTLIL representation for module `\FDCPE_1'.
+Generating RTLIL representation for module `\LDCE'.
+Generating RTLIL representation for module `\LDPE'.
+Generating RTLIL representation for module `\LDCPE'.
+Generating RTLIL representation for module `\AND2B1L'.
+Generating RTLIL representation for module `\OR2L'.
+Generating RTLIL representation for module `\RAM16X1S'.
+Generating RTLIL representation for module `\RAM16X1S_1'.
+Generating RTLIL representation for module `\RAM32X1S'.
+Generating RTLIL representation for module `\RAM32X1S_1'.
+Generating RTLIL representation for module `\RAM64X1S'.
+Generating RTLIL representation for module `\RAM64X1S_1'.
+Generating RTLIL representation for module `\RAM128X1S'.
+Generating RTLIL representation for module `\RAM128X1S_1'.
+Generating RTLIL representation for module `\RAM256X1S'.
+Generating RTLIL representation for module `\RAM512X1S'.
+Generating RTLIL representation for module `\RAM16X2S'.
+Generating RTLIL representation for module `\RAM32X2S'.
+Generating RTLIL representation for module `\RAM64X2S'.
+Generating RTLIL representation for module `\RAM16X4S'.
+Generating RTLIL representation for module `\RAM32X4S'.
+Generating RTLIL representation for module `\RAM16X8S'.
+Generating RTLIL representation for module `\RAM32X8S'.
+Generating RTLIL representation for module `\RAM16X1D'.
+Generating RTLIL representation for module `\RAM16X1D_1'.
+Generating RTLIL representation for module `\RAM32X1D'.
+Generating RTLIL representation for module `\RAM32X1D_1'.
+Generating RTLIL representation for module `\RAM64X1D'.
+Generating RTLIL representation for module `\RAM64X1D_1'.
+Generating RTLIL representation for module `\RAM128X1D'.
+Generating RTLIL representation for module `\RAM256X1D'.
+Generating RTLIL representation for module `\RAM32M'.
+Generating RTLIL representation for module `\RAM32M16'.
+Generating RTLIL representation for module `\RAM64M'.
+Generating RTLIL representation for module `\RAM64M8'.
+Generating RTLIL representation for module `\RAM32X16DR8'.
+Generating RTLIL representation for module `\RAM64X8SW'.
+Generating RTLIL representation for module `\ROM16X1'.
+Generating RTLIL representation for module `\ROM32X1'.
+Generating RTLIL representation for module `\ROM64X1'.
+Generating RTLIL representation for module `\ROM128X1'.
+Generating RTLIL representation for module `\ROM256X1'.
+Generating RTLIL representation for module `\SRL16'.
+Generating RTLIL representation for module `\SRL16E'.
+Generating RTLIL representation for module `\SRLC16'.
+Generating RTLIL representation for module `\SRLC16E'.
+Generating RTLIL representation for module `\SRLC32E'.
+Generating RTLIL representation for module `\CFGLUT5'.
+Generating RTLIL representation for module `\MULT18X18'.
+Generating RTLIL representation for module `\MULT18X18S'.
+Generating RTLIL representation for module `\MULT18X18SIO'.
+Generating RTLIL representation for module `\DSP48A'.
+Generating RTLIL representation for module `\DSP48A1'.
+Generating RTLIL representation for module `\DSP48'.
+Generating RTLIL representation for module `\DSP48E1'.
+Generating RTLIL representation for module `\RAMB18E1'.
+Generating RTLIL representation for module `\RAMB36E1'.
+Successfully finished Verilog frontend.
+
+8.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/cells_xtra.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/cells_xtra.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/cells_xtra.v
+Generating RTLIL representation for module `\RAMB4_S1'.
+Generating RTLIL representation for module `\RAMB4_S2'.
+Generating RTLIL representation for module `\RAMB4_S4'.
+Generating RTLIL representation for module `\RAMB4_S8'.
+Generating RTLIL representation for module `\RAMB4_S16'.
+Generating RTLIL representation for module `\RAMB4_S1_S1'.
+Generating RTLIL representation for module `\RAMB4_S1_S2'.
+Generating RTLIL representation for module `\RAMB4_S1_S4'.
+Generating RTLIL representation for module `\RAMB4_S1_S8'.
+Generating RTLIL representation for module `\RAMB4_S1_S16'.
+Generating RTLIL representation for module `\RAMB4_S2_S2'.
+Generating RTLIL representation for module `\RAMB4_S2_S4'.
+Generating RTLIL representation for module `\RAMB4_S2_S8'.
+Generating RTLIL representation for module `\RAMB4_S2_S16'.
+Generating RTLIL representation for module `\RAMB4_S4_S4'.
+Generating RTLIL representation for module `\RAMB4_S4_S8'.
+Generating RTLIL representation for module `\RAMB4_S4_S16'.
+Generating RTLIL representation for module `\RAMB4_S8_S8'.
+Generating RTLIL representation for module `\RAMB4_S8_S16'.
+Generating RTLIL representation for module `\RAMB4_S16_S16'.
+Generating RTLIL representation for module `\RAMB16_S1'.
+Generating RTLIL representation for module `\RAMB16_S2'.
+Generating RTLIL representation for module `\RAMB16_S4'.
+Generating RTLIL representation for module `\RAMB16_S9'.
+Generating RTLIL representation for module `\RAMB16_S18'.
+Generating RTLIL representation for module `\RAMB16_S36'.
+Generating RTLIL representation for module `\RAMB16_S1_S1'.
+Generating RTLIL representation for module `\RAMB16_S1_S2'.
+Generating RTLIL representation for module `\RAMB16_S1_S4'.
+Generating RTLIL representation for module `\RAMB16_S1_S9'.
+Generating RTLIL representation for module `\RAMB16_S1_S18'.
+Generating RTLIL representation for module `\RAMB16_S1_S36'.
+Generating RTLIL representation for module `\RAMB16_S2_S2'.
+Generating RTLIL representation for module `\RAMB16_S2_S4'.
+Generating RTLIL representation for module `\RAMB16_S2_S9'.
+Generating RTLIL representation for module `\RAMB16_S2_S18'.
+Generating RTLIL representation for module `\RAMB16_S2_S36'.
+Generating RTLIL representation for module `\RAMB16_S4_S4'.
+Generating RTLIL representation for module `\RAMB16_S4_S9'.
+Generating RTLIL representation for module `\RAMB16_S4_S18'.
+Generating RTLIL representation for module `\RAMB16_S4_S36'.
+Generating RTLIL representation for module `\RAMB16_S9_S9'.
+Generating RTLIL representation for module `\RAMB16_S9_S18'.
+Generating RTLIL representation for module `\RAMB16_S9_S36'.
+Generating RTLIL representation for module `\RAMB16_S18_S18'.
+Generating RTLIL representation for module `\RAMB16_S18_S36'.
+Generating RTLIL representation for module `\RAMB16_S36_S36'.
+Generating RTLIL representation for module `\RAMB16BWE_S18'.
+Generating RTLIL representation for module `\RAMB16BWE_S36'.
+Generating RTLIL representation for module `\RAMB16BWE_S18_S9'.
+Generating RTLIL representation for module `\RAMB16BWE_S18_S18'.
+Generating RTLIL representation for module `\RAMB16BWE_S36_S9'.
+Generating RTLIL representation for module `\RAMB16BWE_S36_S18'.
+Generating RTLIL representation for module `\RAMB16BWE_S36_S36'.
+Generating RTLIL representation for module `\RAMB16BWER'.
+Generating RTLIL representation for module `\RAMB8BWER'.
+Generating RTLIL representation for module `\FIFO16'.
+Generating RTLIL representation for module `\RAMB16'.
+Generating RTLIL representation for module `\RAMB32_S64_ECC'.
+Generating RTLIL representation for module `\FIFO18'.
+Generating RTLIL representation for module `\FIFO18_36'.
+Generating RTLIL representation for module `\FIFO36'.
+Generating RTLIL representation for module `\FIFO36_72'.
+Generating RTLIL representation for module `\RAMB18'.
+Generating RTLIL representation for module `\RAMB36'.
+Generating RTLIL representation for module `\RAMB18SDP'.
+Generating RTLIL representation for module `\RAMB36SDP'.
+Generating RTLIL representation for module `\FIFO18E1'.
+Generating RTLIL representation for module `\FIFO36E1'.
+Generating RTLIL representation for module `\FIFO18E2'.
+Generating RTLIL representation for module `\FIFO36E2'.
+Generating RTLIL representation for module `\RAMB18E2'.
+Generating RTLIL representation for module `\RAMB36E2'.
+Generating RTLIL representation for module `\URAM288'.
+Generating RTLIL representation for module `\URAM288_BASE'.
+Generating RTLIL representation for module `\DSP48E'.
+Generating RTLIL representation for module `\DSP48E2'.
+Generating RTLIL representation for module `\FDDRCPE'.
+Generating RTLIL representation for module `\FDDRRSE'.
+Generating RTLIL representation for module `\IFDDRCPE'.
+Generating RTLIL representation for module `\IFDDRRSE'.
+Generating RTLIL representation for module `\OFDDRCPE'.
+Generating RTLIL representation for module `\OFDDRRSE'.
+Generating RTLIL representation for module `\OFDDRTCPE'.
+Generating RTLIL representation for module `\OFDDRTRSE'.
+Generating RTLIL representation for module `\IDDR2'.
+Generating RTLIL representation for module `\ODDR2'.
+Generating RTLIL representation for module `\IDDR'.
+Generating RTLIL representation for module `\IDDR_2CLK'.
+Generating RTLIL representation for module `\ODDR'.
+Generating RTLIL representation for module `\IDELAYCTRL'.
+Generating RTLIL representation for module `\IDELAY'.
+Generating RTLIL representation for module `\ISERDES'.
+Generating RTLIL representation for module `\OSERDES'.
+Generating RTLIL representation for module `\IODELAY'.
+Generating RTLIL representation for module `\ISERDES_NODELAY'.
+Generating RTLIL representation for module `\IODELAYE1'.
+Generating RTLIL representation for module `\ISERDESE1'.
+Generating RTLIL representation for module `\OSERDESE1'.
+Generating RTLIL representation for module `\IDELAYE2'.
+Generating RTLIL representation for module `\ODELAYE2'.
+Generating RTLIL representation for module `\ISERDESE2'.
+Generating RTLIL representation for module `\OSERDESE2'.
+Generating RTLIL representation for module `\PHASER_IN'.
+Generating RTLIL representation for module `\PHASER_IN_PHY'.
+Generating RTLIL representation for module `\PHASER_OUT'.
+Generating RTLIL representation for module `\PHASER_OUT_PHY'.
+Generating RTLIL representation for module `\PHASER_REF'.
+Generating RTLIL representation for module `\PHY_CONTROL'.
+Generating RTLIL representation for module `\IDDRE1'.
+Generating RTLIL representation for module `\ODDRE1'.
+Generating RTLIL representation for module `\IDELAYE3'.
+Generating RTLIL representation for module `\ODELAYE3'.
+Generating RTLIL representation for module `\ISERDESE3'.
+Generating RTLIL representation for module `\OSERDESE3'.
+Generating RTLIL representation for module `\BITSLICE_CONTROL'.
+Generating RTLIL representation for module `\RIU_OR'.
+Generating RTLIL representation for module `\RX_BITSLICE'.
+Generating RTLIL representation for module `\RXTX_BITSLICE'.
+Generating RTLIL representation for module `\TX_BITSLICE'.
+Generating RTLIL representation for module `\TX_BITSLICE_TRI'.
+Generating RTLIL representation for module `\IODELAY2'.
+Generating RTLIL representation for module `\IODRP2'.
+Generating RTLIL representation for module `\IODRP2_MCB'.
+Generating RTLIL representation for module `\ISERDES2'.
+Generating RTLIL representation for module `\OSERDES2'.
+Generating RTLIL representation for module `\IBUF_DLY_ADJ'.
+Generating RTLIL representation for module `\IBUF_IBUFDISABLE'.
+Generating RTLIL representation for module `\IBUF_INTERMDISABLE'.
+Generating RTLIL representation for module `\IBUF_ANALOG'.
+Generating RTLIL representation for module `\IBUFE3'.
+Generating RTLIL representation for module `\IBUFDS'.
+Generating RTLIL representation for module `\IBUFDS_DLY_ADJ'.
+Generating RTLIL representation for module `\IBUFDS_IBUFDISABLE'.
+Generating RTLIL representation for module `\IBUFDS_INTERMDISABLE'.
+Generating RTLIL representation for module `\IBUFDS_DIFF_OUT'.
+Generating RTLIL representation for module `\IBUFDS_DIFF_OUT_IBUFDISABLE'.
+Generating RTLIL representation for module `\IBUFDS_DIFF_OUT_INTERMDISABLE'.
+Generating RTLIL representation for module `\IBUFDSE3'.
+Generating RTLIL representation for module `\IBUFDS_DPHY'.
+Generating RTLIL representation for module `\IBUFGDS'.
+Generating RTLIL representation for module `\IBUFGDS_DIFF_OUT'.
+Generating RTLIL representation for module `\IOBUF_DCIEN'.
+Generating RTLIL representation for module `\IOBUF_INTERMDISABLE'.
+Generating RTLIL representation for module `\IOBUFE3'.
+Generating RTLIL representation for module `\IOBUFDS'.
+Generating RTLIL representation for module `\IOBUFDS_DCIEN'.
+Generating RTLIL representation for module `\IOBUFDS_INTERMDISABLE'.
+Generating RTLIL representation for module `\IOBUFDS_DIFF_OUT'.
+Generating RTLIL representation for module `\IOBUFDS_DIFF_OUT_DCIEN'.
+Generating RTLIL representation for module `\IOBUFDS_DIFF_OUT_INTERMDISABLE'.
+Generating RTLIL representation for module `\IOBUFDSE3'.
+Generating RTLIL representation for module `\OBUFDS'.
+Generating RTLIL representation for module `\OBUFDS_DPHY'.
+Generating RTLIL representation for module `\OBUFTDS'.
+Generating RTLIL representation for module `\KEEPER'.
+Generating RTLIL representation for module `\PULLDOWN'.
+Generating RTLIL representation for module `\PULLUP'.
+Generating RTLIL representation for module `\DCIRESET'.
+Generating RTLIL representation for module `\HPIO_VREF'.
+Generating RTLIL representation for module `\BUFGCE'.
+Generating RTLIL representation for module `\BUFGCE_1'.
+Generating RTLIL representation for module `\BUFGMUX'.
+Generating RTLIL representation for module `\BUFGMUX_1'.
+Generating RTLIL representation for module `\BUFGMUX_CTRL'.
+Generating RTLIL representation for module `\BUFGMUX_VIRTEX4'.
+Generating RTLIL representation for module `\BUFG_GT'.
+Generating RTLIL representation for module `\BUFG_GT_SYNC'.
+Generating RTLIL representation for module `\BUFG_PS'.
+Generating RTLIL representation for module `\BUFGCE_DIV'.
+Generating RTLIL representation for module `\BUFH'.
+Generating RTLIL representation for module `\BUFIO2'.
+Generating RTLIL representation for module `\BUFIO2_2CLK'.
+Generating RTLIL representation for module `\BUFIO2FB'.
+Generating RTLIL representation for module `\BUFPLL'.
+Generating RTLIL representation for module `\BUFPLL_MCB'.
+Generating RTLIL representation for module `\BUFIO'.
+Generating RTLIL representation for module `\BUFIODQS'.
+Generating RTLIL representation for module `\BUFR'.
+Generating RTLIL representation for module `\BUFMR'.
+Generating RTLIL representation for module `\BUFMRCE'.
+Generating RTLIL representation for module `\DCM'.
+Generating RTLIL representation for module `\DCM_SP'.
+Generating RTLIL representation for module `\DCM_CLKGEN'.
+Generating RTLIL representation for module `\DCM_ADV'.
+Generating RTLIL representation for module `\DCM_BASE'.
+Generating RTLIL representation for module `\DCM_PS'.
+Generating RTLIL representation for module `\PMCD'.
+Generating RTLIL representation for module `\PLL_ADV'.
+Generating RTLIL representation for module `\PLL_BASE'.
+Generating RTLIL representation for module `\MMCM_ADV'.
+Generating RTLIL representation for module `\MMCM_BASE'.
+Generating RTLIL representation for module `\MMCME2_ADV'.
+Generating RTLIL representation for module `\MMCME2_BASE'.
+Generating RTLIL representation for module `\PLLE2_ADV'.
+Generating RTLIL representation for module `\PLLE2_BASE'.
+Generating RTLIL representation for module `\MMCME3_ADV'.
+Generating RTLIL representation for module `\MMCME3_BASE'.
+Generating RTLIL representation for module `\PLLE3_ADV'.
+Generating RTLIL representation for module `\PLLE3_BASE'.
+Generating RTLIL representation for module `\MMCME4_ADV'.
+Generating RTLIL representation for module `\MMCME4_BASE'.
+Generating RTLIL representation for module `\PLLE4_ADV'.
+Generating RTLIL representation for module `\PLLE4_BASE'.
+Generating RTLIL representation for module `\BUFT'.
+Generating RTLIL representation for module `\IN_FIFO'.
+Generating RTLIL representation for module `\OUT_FIFO'.
+Generating RTLIL representation for module `\HARD_SYNC'.
+Generating RTLIL representation for module `\STARTUP_SPARTAN3'.
+Generating RTLIL representation for module `\STARTUP_SPARTAN3E'.
+Generating RTLIL representation for module `\STARTUP_SPARTAN3A'.
+Generating RTLIL representation for module `\STARTUP_SPARTAN6'.
+Generating RTLIL representation for module `\STARTUP_VIRTEX4'.
+Generating RTLIL representation for module `\STARTUP_VIRTEX5'.
+Generating RTLIL representation for module `\STARTUP_VIRTEX6'.
+Generating RTLIL representation for module `\STARTUPE2'.
+Generating RTLIL representation for module `\STARTUPE3'.
+Generating RTLIL representation for module `\CAPTURE_SPARTAN3'.
+Generating RTLIL representation for module `\CAPTURE_SPARTAN3A'.
+Generating RTLIL representation for module `\CAPTURE_VIRTEX4'.
+Generating RTLIL representation for module `\CAPTURE_VIRTEX5'.
+Generating RTLIL representation for module `\CAPTURE_VIRTEX6'.
+Generating RTLIL representation for module `\CAPTUREE2'.
+Generating RTLIL representation for module `\ICAP_SPARTAN3A'.
+Generating RTLIL representation for module `\ICAP_SPARTAN6'.
+Generating RTLIL representation for module `\ICAP_VIRTEX4'.
+Generating RTLIL representation for module `\ICAP_VIRTEX5'.
+Generating RTLIL representation for module `\ICAP_VIRTEX6'.
+Generating RTLIL representation for module `\ICAPE2'.
+Generating RTLIL representation for module `\ICAPE3'.
+Generating RTLIL representation for module `\BSCAN_SPARTAN3'.
+Generating RTLIL representation for module `\BSCAN_SPARTAN3A'.
+Generating RTLIL representation for module `\BSCAN_SPARTAN6'.
+Generating RTLIL representation for module `\BSCAN_VIRTEX4'.
+Generating RTLIL representation for module `\BSCAN_VIRTEX5'.
+Generating RTLIL representation for module `\BSCAN_VIRTEX6'.
+Generating RTLIL representation for module `\BSCANE2'.
+Generating RTLIL representation for module `\DNA_PORT'.
+Generating RTLIL representation for module `\DNA_PORTE2'.
+Generating RTLIL representation for module `\FRAME_ECC_VIRTEX4'.
+Generating RTLIL representation for module `\FRAME_ECC_VIRTEX5'.
+Generating RTLIL representation for module `\FRAME_ECC_VIRTEX6'.
+Generating RTLIL representation for module `\FRAME_ECCE2'.
+Generating RTLIL representation for module `\FRAME_ECCE3'.
+Generating RTLIL representation for module `\FRAME_ECCE4'.
+Generating RTLIL representation for module `\USR_ACCESS_VIRTEX4'.
+Generating RTLIL representation for module `\USR_ACCESS_VIRTEX5'.
+Generating RTLIL representation for module `\USR_ACCESS_VIRTEX6'.
+Generating RTLIL representation for module `\USR_ACCESSE2'.
+Generating RTLIL representation for module `\POST_CRC_INTERNAL'.
+Generating RTLIL representation for module `\SUSPEND_SYNC'.
+Generating RTLIL representation for module `\KEY_CLEAR'.
+Generating RTLIL representation for module `\MASTER_JTAG'.
+Generating RTLIL representation for module `\SPI_ACCESS'.
+Generating RTLIL representation for module `\EFUSE_USR'.
+Generating RTLIL representation for module `\SYSMON'.
+Generating RTLIL representation for module `\XADC'.
+Generating RTLIL representation for module `\SYSMONE1'.
+Generating RTLIL representation for module `\SYSMONE4'.
+Generating RTLIL representation for module `\GTPA1_DUAL'.
+Generating RTLIL representation for module `\GT11_CUSTOM'.
+Generating RTLIL representation for module `\GT11_DUAL'.
+Generating RTLIL representation for module `\GT11CLK'.
+Generating RTLIL representation for module `\GT11CLK_MGT'.
+Generating RTLIL representation for module `\GTP_DUAL'.
+Generating RTLIL representation for module `\GTX_DUAL'.
+Generating RTLIL representation for module `\CRC32'.
+Generating RTLIL representation for module `\CRC64'.
+Generating RTLIL representation for module `\GTHE1_QUAD'.
+Generating RTLIL representation for module `\GTXE1'.
+Generating RTLIL representation for module `\IBUFDS_GTXE1'.
+Generating RTLIL representation for module `\IBUFDS_GTHE1'.
+Generating RTLIL representation for module `\GTHE2_CHANNEL'.
+Generating RTLIL representation for module `\GTHE2_COMMON'.
+Generating RTLIL representation for module `\GTPE2_CHANNEL'.
+Generating RTLIL representation for module `\GTPE2_COMMON'.
+Generating RTLIL representation for module `\GTXE2_CHANNEL'.
+Generating RTLIL representation for module `\GTXE2_COMMON'.
+Generating RTLIL representation for module `\IBUFDS_GTE2'.
+Generating RTLIL representation for module `\GTHE3_CHANNEL'.
+Generating RTLIL representation for module `\GTHE3_COMMON'.
+Generating RTLIL representation for module `\GTYE3_CHANNEL'.
+Generating RTLIL representation for module `\GTYE3_COMMON'.
+Generating RTLIL representation for module `\IBUFDS_GTE3'.
+Generating RTLIL representation for module `\OBUFDS_GTE3'.
+Generating RTLIL representation for module `\OBUFDS_GTE3_ADV'.
+Generating RTLIL representation for module `\GTHE4_CHANNEL'.
+Generating RTLIL representation for module `\GTHE4_COMMON'.
+Generating RTLIL representation for module `\GTYE4_CHANNEL'.
+Generating RTLIL representation for module `\GTYE4_COMMON'.
+Generating RTLIL representation for module `\IBUFDS_GTE4'.
+Generating RTLIL representation for module `\OBUFDS_GTE4'.
+Generating RTLIL representation for module `\OBUFDS_GTE4_ADV'.
+Generating RTLIL representation for module `\GTM_DUAL'.
+Generating RTLIL representation for module `\IBUFDS_GTM'.
+Generating RTLIL representation for module `\OBUFDS_GTM'.
+Generating RTLIL representation for module `\OBUFDS_GTM_ADV'.
+Generating RTLIL representation for module `\HSDAC'.
+Generating RTLIL representation for module `\HSADC'.
+Generating RTLIL representation for module `\RFDAC'.
+Generating RTLIL representation for module `\RFADC'.
+Generating RTLIL representation for module `\PCIE_A1'.
+Generating RTLIL representation for module `\PCIE_EP'.
+Generating RTLIL representation for module `\PCIE_2_0'.
+Generating RTLIL representation for module `\PCIE_2_1'.
+Generating RTLIL representation for module `\PCIE_3_0'.
+Generating RTLIL representation for module `\PCIE_3_1'.
+Generating RTLIL representation for module `\PCIE40E4'.
+Generating RTLIL representation for module `\PCIE4CE4'.
+Generating RTLIL representation for module `\EMAC'.
+Generating RTLIL representation for module `\TEMAC'.
+Generating RTLIL representation for module `\TEMAC_SINGLE'.
+Generating RTLIL representation for module `\CMAC'.
+Generating RTLIL representation for module `\CMACE4'.
+Generating RTLIL representation for module `\MCB'.
+Generating RTLIL representation for module `\HBM_REF_CLK'.
+Generating RTLIL representation for module `\HBM_SNGLBLI_INTF_APB'.
+Generating RTLIL representation for module `\HBM_SNGLBLI_INTF_AXI'.
+Generating RTLIL representation for module `\HBM_ONE_STACK_INTF'.
+Generating RTLIL representation for module `\HBM_TWO_STACK_INTF'.
+Generating RTLIL representation for module `\PPC405_ADV'.
+Generating RTLIL representation for module `\PPC440'.
+Generating RTLIL representation for module `\PS7'.
+Generating RTLIL representation for module `\PS8'.
+Generating RTLIL representation for module `\ILKN'.
+Generating RTLIL representation for module `\ILKNE4'.
+Generating RTLIL representation for module `\VCU'.
+Generating RTLIL representation for module `\FE'.
+Successfully finished Verilog frontend.
+
+8.3. Executing HIERARCHY pass (managing design hierarchy).
+
+8.3.1. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+
+8.3.2. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+Removed 0 unused modules.
+
+8.4. Executing PROC pass (convert processes to netlists).
+
+8.4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+8.4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+8.4.4. Executing PROC_INIT pass (extract init attributes).
+
+8.4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+8.4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+8.4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+8.4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+8.4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+8.4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+8.4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.5. Executing TRIBUF pass.
+
+8.6. Executing DEMINOUT pass (demote inout ports to input or output).
+
+8.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.9. Executing CHECK pass (checking for obvious problems).
+Checking module nr_divider_18bit_pipelined...
+Found and reported 0 problems.
+
+8.10. Executing OPT pass (performing simple optimizations).
+
+8.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+8.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+8.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.10.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+/usr/lib/python3/dist-packages/xdot/ui/elements.py:174: UserWarning: Font family 'Times-Roman' is not available, using 'Ubuntu 11'
+  warnings.warn(msg)
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.10.9. Finished fast OPT passes. (There is nothing left to do.)
+
+8.11. Executing FSM pass (extract and optimize FSM).
+
+8.11.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+8.11.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+8.11.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+8.11.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.11.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+8.11.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+8.11.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+8.11.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+8.12. Executing OPT pass (performing simple optimizations).
+
+8.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+8.12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+8.12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.12.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.12.9. Finished fast OPT passes. (There is nothing left to do.)
+
+8.13. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 18) from port B of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+Removed top 1 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:46$2 ($mul).
+Removed top 17 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:48$4 ($sub).
+Removed top 17 bits (of 36) from port B of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:48$5 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:48$5 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:51$6 ($mul).
+Removed top 17 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:53$8 ($sub).
+Removed top 17 bits (of 36) from port B of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:53$9 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:53$9 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:56$10 ($mul).
+Removed top 16 bits (of 36) from port B of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+Removed top 18 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+Removed top 2 bits (of 20) from port B of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+Removed top 2 bits (of 35) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+Removed top 18 bits (of 36) from wire nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14_Y.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.final_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.stg1_D_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.stg2_X1_mult.
+
+8.14. Executing PEEPOPT pass (run peephole optimizers).
+
+8.15. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+8.16. Executing PMUX2SHIFTX pass.
+
+8.17. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.18. Executing TECHMAP pass (map to technology primitives).
+
+8.18.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/mul2dsp.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/mul2dsp.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/mul2dsp.v
+Generating RTLIL representation for module `\_80_mul'.
+Generating RTLIL representation for module `\_90_soft_mul'.
+Successfully finished Verilog frontend.
+
+8.18.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/xc7_dsp_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/xc7_dsp_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/xc7_dsp_map.v
+Generating RTLIL representation for module `\$__MUL25X18'.
+Successfully finished Verilog frontend.
+
+8.18.3. Continuing TECHMAP pass.
+Using template $paramod$9751cd1ed97b3b6d03f5cab1157192ffce2e7e71\_80_mul for cells of type $mul.
+Using template $paramod$369f825fcf54e9b8b63565d90259f733599695eb\_80_mul for cells of type $mul.
+Using template $paramod$d19ef1910d7a9c9b06a9c195e5f493bbb08a2f62\_80_mul for cells of type $mul.
+Using template $paramod$e164568f5ea281a1987c588260db38ae6a6d6c82\$__MUL25X18 for cells of type $__MUL25X18.
+Using template $paramod$fbcf1176c2d741f3b8e55c4dea497a143e2b2133\_80_mul for cells of type $mul.
+No more expansions possible.
+<suppressed ~299 debug messages>
+
+8.19. Executing OPT_EXPR pass (perform const folding).
+
+8.20. Executing WREDUCE pass (reducing word size of cells).
+
+8.21. Executing XILINX_DSP pass (pack resources into DSPs).
+Analysing nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:53$9 for Xilinx DSP packing.
+
+Analysing nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:48$5 for Xilinx DSP packing.
+
+Analysing nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 for Xilinx DSP packing.
+
+Analysing nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:46$2 for Xilinx DSP packing.
+
+Analysing nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:56$10 for Xilinx DSP packing.
+
+Analysing nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:51$6 for Xilinx DSP packing.
+
+<suppressed ~78 debug messages>
+
+8.22. Executing TECHMAP pass (map to technology primitives).
+
+8.22.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/cmp2lut.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/cmp2lut.v
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+8.22.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/cmp2lcu.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/cmp2lcu.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/cmp2lcu.v
+Generating RTLIL representation for module `\_80_lcu_cmp_'.
+Generating RTLIL representation for module `\$__CMP2LCU'.
+Successfully finished Verilog frontend.
+
+8.22.3. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~7 debug messages>
+
+8.23. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module nr_divider_18bit_pipelined:
+  creating $macc model for $sub$Lab03/nr_divider_18bit_pipelined.v:48$4 ($sub).
+  creating $macc model for $sub$Lab03/nr_divider_18bit_pipelined.v:53$8 ($sub).
+  creating $macc model for $sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+  creating $alu model for $macc $sub$Lab03/nr_divider_18bit_pipelined.v:72$14.
+  creating $alu model for $macc $sub$Lab03/nr_divider_18bit_pipelined.v:53$8.
+  creating $alu model for $macc $sub$Lab03/nr_divider_18bit_pipelined.v:48$4.
+  creating $alu cell for $sub$Lab03/nr_divider_18bit_pipelined.v:48$4: $auto$alumacc.cc:495:replace_alu$1253
+  creating $alu cell for $sub$Lab03/nr_divider_18bit_pipelined.v:53$8: $auto$alumacc.cc:495:replace_alu$1256
+  creating $alu cell for $sub$Lab03/nr_divider_18bit_pipelined.v:72$14: $auto$alumacc.cc:495:replace_alu$1259
+  created 3 $alu and 0 $macc cells.
+
+8.24. Executing SHARE pass (SAT-based resource sharing).
+
+8.25. Executing OPT pass (performing simple optimizations).
+
+8.25.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.25.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.25.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+8.25.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+8.25.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.25.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.25.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 0 unused cells and 66 unused wires.
+<suppressed ~1 debug messages>
+
+8.25.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.25.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.25.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+8.25.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+8.25.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.25.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.25.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.25.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.25.16. Finished fast OPT passes. (There is nothing left to do.)
+
+8.26. Executing MEMORY pass.
+
+8.26.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.26.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+8.26.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+8.26.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.26.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.26.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.26.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.26.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.26.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.26.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.27. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.28. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+
+8.29. Executing TECHMAP pass (map to technology primitives).
+
+8.29.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/lutrams_xc5v_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/lutrams_xc5v_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/lutrams_xc5v_map.v
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_SP_'.
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_DP_'.
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_QP_'.
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_OP_'.
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_SDP_'.
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_64X8SW_'.
+Generating RTLIL representation for module `\$__XILINX_LUTRAM_32X16DR8_'.
+Successfully finished Verilog frontend.
+
+8.29.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~9 debug messages>
+
+8.30. Executing TECHMAP pass (map to technology primitives).
+
+8.30.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/brams_xc6v_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/brams_xc6v_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/brams_xc6v_map.v
+Generating RTLIL representation for module `\$__XILINX_BLOCKRAM_TDP_'.
+Generating RTLIL representation for module `\$__XILINX_BLOCKRAM_SDP_'.
+Successfully finished Verilog frontend.
+
+8.30.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+8.31. Executing OPT pass (performing simple optimizations).
+
+8.31.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+<suppressed ~11 debug messages>
+
+8.31.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.31.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.31.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+8.31.5. Finished fast OPT passes.
+
+8.32. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8.33. Executing OPT pass (performing simple optimizations).
+
+8.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.33.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+8.33.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+8.33.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+8.33.6. Executing OPT_SHARE pass.
+
+8.33.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.33.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+8.33.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.33.10. Finished fast OPT passes. (There is nothing left to do.)
+
+8.34. Executing XILINX_SRL pass (Xilinx shift register extraction).
+
+8.35. Executing TECHMAP pass (map to technology primitives).
+
+8.35.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+8.35.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/arith_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/arith_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/arith_map.v
+Generating RTLIL representation for module `\_80_xilinx_lcu'.
+Generating RTLIL representation for module `\_80_xilinx_alu'.
+Successfully finished Verilog frontend.
+
+8.35.3. Continuing TECHMAP pass.
+Using template $paramod$b3c33049252d3bceb37a80a59b55f5fa1d3b740d\_80_xilinx_alu for cells of type $alu.
+Using template $paramod$296f978e3d35dbecc086a5eb43cf7675e932766b\_80_xilinx_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+<suppressed ~154 debug messages>
+
+8.36. Executing OPT pass (performing simple optimizations).
+
+8.36.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+<suppressed ~122 debug messages>
+
+8.36.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+8.36.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.36.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 10 unused cells and 61 unused wires.
+<suppressed ~11 debug messages>
+
+8.36.5. Finished fast OPT passes.
+
+8.37. Executing IOPADMAP pass (mapping inputs/outputs to IO-PAD cells).
+Mapping port nr_divider_18bit_pipelined.clk using IBUF.
+Mapping port nr_divider_18bit_pipelined.dividend_A using IBUF.
+Mapping port nr_divider_18bit_pipelined.divisor_D using IBUF.
+Mapping port nr_divider_18bit_pipelined.enable using IBUF.
+Mapping port nr_divider_18bit_pipelined.quotient_Y using OBUF.
+Mapping port nr_divider_18bit_pipelined.rst_n using IBUF.
+Mapping port nr_divider_18bit_pipelined.valid_out using OBUF.
+
+8.38. Executing TECHMAP pass (map to technology primitives).
+
+8.38.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+8.38.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/cells_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/cells_map.v
+Generating RTLIL representation for module `\$__SHREG_'.
+Generating RTLIL representation for module `\$__XILINX_SHREG_'.
+Generating RTLIL representation for module `\$__XILINX_MUXF78'.
+Successfully finished Verilog frontend.
+
+8.38.3. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~80 debug messages>
+
+8.39. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+
+8.40. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+8.41. Executing ABC pass (technology mapping using ABC).
+
+8.41.1. Extracting gate netlist of module `\nr_divider_18bit_pipelined' to `<abc-temp-dir>/input.blif'..
+
+8.41.1.1. Executed ABC.
+Extracted 210 gates and 255 wires to a netlist network with 45 inputs and 210 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 28 2025 21:19:44)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lut /tmp/yosys-abc-JvfAOk/lutdefs.txt 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + if 
+ABC: + mfs2 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+8.41.1.2. Re-integrating ABC results.
+ABC RESULTS:              $lut cells:      210
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:       45
+ABC RESULTS:          output signals:      210
+Removing temp directory.
+Removing global temp directory.
+Removed 0 unused cells and 255 unused wires.
+
+8.42. Executing TECHMAP pass (map to technology primitives).
+
+8.42.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/ff_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/ff_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/ff_map.v
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_DFFSRE_NPPP_'.
+Generating RTLIL representation for module `\$_DFFSRE_PPPP_'.
+Generating RTLIL representation for module `\$_SDFFE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFE_PP1P_'.
+Generating RTLIL representation for module `\$_DLATCH_NP0_'.
+Generating RTLIL representation for module `\$_DLATCH_PP0_'.
+Generating RTLIL representation for module `\$_DLATCH_NP1_'.
+Generating RTLIL representation for module `\$_DLATCH_PP1_'.
+Generating RTLIL representation for module `\$_DLATCH_NPP_'.
+Generating RTLIL representation for module `\$_DLATCH_PPP_'.
+Successfully finished Verilog frontend.
+
+8.42.2. Continuing TECHMAP pass.
+Using template $paramod\$_DFFE_PP0P_\_TECHMAP_WIREINIT_Q_=1'x for cells of type $_DFFE_PP0P_.
+No more expansions possible.
+<suppressed ~195 debug messages>
+
+8.43. Executing XILINX_SRL pass (Xilinx shift register extraction).
+
+8.44. Executing TECHMAP pass (map to technology primitives).
+
+8.44.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/lut_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/lut_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/lut_map.v
+Generating RTLIL representation for module `\$lut'.
+Successfully finished Verilog frontend.
+
+8.44.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/xilinx/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/xilinx/cells_map.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/xilinx/cells_map.v
+Generating RTLIL representation for module `\$__SHREG_'.
+Generating RTLIL representation for module `\$__XILINX_SHREG_'.
+Generating RTLIL representation for module `\$__XILINX_MUXF78'.
+Successfully finished Verilog frontend.
+
+8.44.3. Continuing TECHMAP pass.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+No more expansions possible.
+<suppressed ~229 debug messages>
+
+8.45. Executing XILINX_DFFOPT pass (optimize FF control signal usage).
+Optimizing FFs in nr_divider_18bit_pipelined.
+
+8.46. Executing OPT_LUT_INS pass (discard unused LUT inputs).
+Optimizing LUTs in nr_divider_18bit_pipelined.
+
+8.47. Executing CLKBUFMAP pass (inserting clock buffers).
+Inserting BUFG on nr_divider_18bit_pipelined.$iopadmap$clk[0].
+Removed 0 unused cells and 1416 unused wires.
+
+8.48. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `nr_divider_18bit_pipelined'. Setting top module to nr_divider_18bit_pipelined.
+
+8.48.1. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+
+8.48.2. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+Removed 0 unused modules.
+
+8.49. Printing statistics.
+
+=== nr_divider_18bit_pipelined ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      221 wires
+     1051 wire bits
+       26 public wires
+      448 public wire bits
+        7 ports
+       58 port bits
+      275 cells
+        1   BUFG
+        6   DSP48E1
+       39   IBUF
+      210   INV
+       19   OBUF
+      181 submodules
+       15   CARRY4
+      166   FDCE
+
+   Estimated number of LCs:          0
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+      275 nr_divider_18bit_pipelined
+
+        +----------Count including submodules.
+        | 
+      221 wires
+     1051 wire bits
+       26 public wires
+      448 public wire bits
+        7 ports
+       58 port bits
+        - memories
+        - memory bits
+        - processes
+      275 cells
+        1   BUFG
+        6   DSP48E1
+       39   IBUF
+      210   INV
+       19   OBUF
+      181 submodules
+       15   CARRY4
+      166   FDCE
+
+   Estimated number of LCs:          0
+
+8.50. Executing CHECK pass (checking for obvious problems).
+Checking module nr_divider_18bit_pipelined...
+Found and reported 0 problems.
+
+9. Executing Verilog backend.
+
+9.1. Executing BMUXMAP pass.
+
+9.2. Executing DEMUXMAP pass.
+Dumping module `\nr_divider_18bit_pipelined'.
+
+End of script. Logfile hash: 12f58c23eb, CPU: user 1.58s system 0.05s, MEM: 117.92 MB peak
+Yosys 0.57+218 (git sha1 7ebd97216, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+Time spent: 69% 19x read_verilog (1 sec), 7% 16x opt_clean (0 sec), ...

@@ -1,0 +1,848 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.57+218 (git sha1 7ebd97216, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+
+-- Running command `
+    # 1. Read the input Verilog design
+    read_verilog "Lab03/nr_divider_18bit_pipelined.v"
+
+    # 2. Elaborate the design hierarchy using the specified top module
+    hierarchy -check -top nr_divider_18bit_pipelined
+
+    show -format dot -prefix Lab03/synth/gf180mcu/netlist_view
+
+    show
+
+    # 3. Perform generic high-level synthesis targeted at the top module
+    synth -top nr_divider_18bit_pipelined
+
+    # 4. Map flip-flops to the target PDK
+    dfflibmap -liberty "pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00.lib"
+
+    # 5. Map combinatorial logic to the target PDK using ABC
+    abc -liberty "pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00.lib"
+
+    # 6. Clean up unused cells and wires
+    clean
+
+    # 7. Generate area and utilization report
+    # stat -json
+
+    # 8. Write the final synthesized netlist to the target location
+    write_verilog "Lab03/synth/gf180mcu/netlist.v"
+' --
+
+1. Executing Verilog-2005 frontend: Lab03/nr_divider_18bit_pipelined.v
+Parsing Verilog input from `Lab03/nr_divider_18bit_pipelined.v' to AST representation.
+verilog frontend filename Lab03/nr_divider_18bit_pipelined.v
+Generating RTLIL representation for module `\nr_divider_18bit_pipelined'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+
+2.2. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+Removed 0 unused modules.
+
+3. Generating Graphviz representation of design.
+Writing dot description to `Lab03/synth/gf180mcu/netlist_view.dot'.
+Dumping module nr_divider_18bit_pipelined to page 1.
+
+4. Generating Graphviz representation of design.
+Writing dot description to `/home/belal/.yosys_show.dot'.
+Dumping module nr_divider_18bit_pipelined to page 1.
+Exec: { test -f '/home/belal/.yosys_show.dot.pid' && fuser -s '/home/belal/.yosys_show.dot.pid' 2> /dev/null; } || ( echo $$ >&3; exec xdot '/home/belal/.yosys_show.dot'; ) 3> '/home/belal/.yosys_show.dot.pid' &
+
+5. Executing SYNTH pass.
+
+5.1. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1.1. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+
+5.1.2. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+Removed 0 unused modules.
+
+5.2. Executing PROC pass (convert processes to netlists).
+
+5.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+5.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 5 switch rules as full_case in process $proc$Lab03/nr_divider_18bit_pipelined.v:59$11 in module nr_divider_18bit_pipelined.
+Removed a total of 0 dead cases.
+
+5.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 0 assignments to connections.
+
+5.2.4. Executing PROC_INIT pass (extract init attributes).
+
+5.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+
+5.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~4 debug messages>
+
+5.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+     1/13: $0\valid_out[0:0]
+     2/13: $0\stg3_valid[0:0]
+     3/13: $0\stg2_valid[0:0]
+     4/13: $0\stg1_valid[0:0]
+     5/13: $0\stg3_X2[17:0]
+     6/13: $0\stg3_A[17:0]
+     7/13: $0\stg2_X1[17:0]
+     8/13: $0\stg2_D[17:0]
+     9/13: $0\stg2_A[17:0]
+    10/13: $0\stg1_X0[17:0]
+    11/13: $0\stg1_D[17:0]
+    12/13: $0\stg1_A[17:0]
+    13/13: $0\quotient_Y[17:0]
+
+5.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+5.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\nr_divider_18bit_pipelined.\quotient_Y' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$61' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\valid_out' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$66' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_A' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$71' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_D' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$76' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_X0' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$81' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg1_valid' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$86' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_A' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$91' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_D' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$96' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_X1' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$101' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg2_valid' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$106' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg3_A' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$111' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg3_X2' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$116' with positive edge clock and positive level reset.
+Creating register for signal `\nr_divider_18bit_pipelined.\stg3_valid' using process `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+  created $adff cell `$procdff$121' with positive edge clock and positive level reset.
+
+5.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+Removing empty process `nr_divider_18bit_pipelined.$proc$Lab03/nr_divider_18bit_pipelined.v:59$11'.
+Cleaned up 4 empty switches.
+
+5.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+<suppressed ~32 debug messages>
+
+5.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 14 unused cells and 65 unused wires.
+<suppressed ~15 debug messages>
+
+5.5. Executing CHECK pass (checking for obvious problems).
+Checking module nr_divider_18bit_pipelined...
+Found and reported 0 problems.
+
+5.6. Executing OPT pass (performing simple optimizations).
+
+5.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+5.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+5.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.6.9. Finished fast OPT passes. (There is nothing left to do.)
+
+5.7. Executing FSM pass (extract and optimize FSM).
+
+5.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+5.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+5.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+5.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+5.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+5.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+5.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+5.8. Executing OPT pass (performing simple optimizations).
+
+5.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+5.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+5.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$96 ($adff) from module nr_divider_18bit_pipelined (D = \stg1_D, Q = \stg2_D).
+Adding EN signal on $procdff$91 ($adff) from module nr_divider_18bit_pipelined (D = \stg1_A, Q = \stg2_A).
+Adding EN signal on $procdff$81 ($adff) from module nr_divider_18bit_pipelined (D = $sub$Lab03/nr_divider_18bit_pipelined.v:72$14_Y [17:0], Q = \stg1_X0).
+Adding EN signal on $procdff$76 ($adff) from module nr_divider_18bit_pipelined (D = \divisor_D, Q = \stg1_D).
+Adding EN signal on $procdff$71 ($adff) from module nr_divider_18bit_pipelined (D = \dividend_A, Q = \stg1_A).
+Adding EN signal on $procdff$61 ($adff) from module nr_divider_18bit_pipelined (D = \final_mult [32:15], Q = \quotient_Y).
+Adding EN signal on $procdff$116 ($adff) from module nr_divider_18bit_pipelined (D = \stg3_X2_mult [32:15], Q = \stg3_X2).
+Adding EN signal on $procdff$111 ($adff) from module nr_divider_18bit_pipelined (D = \stg2_A, Q = \stg3_A).
+Adding EN signal on $procdff$101 ($adff) from module nr_divider_18bit_pipelined (D = \stg2_X1_mult [32:15], Q = \stg2_X1).
+
+5.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 9 unused cells and 9 unused wires.
+<suppressed ~10 debug messages>
+
+5.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+5.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+5.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 18) from port B of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+Removed top 1 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:46$2 ($mul).
+Removed top 17 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:48$4 ($sub).
+Removed top 17 bits (of 36) from port B of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:48$5 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:48$5 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:51$6 ($mul).
+Removed top 17 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:53$8 ($sub).
+Removed top 17 bits (of 36) from port B of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:53$9 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:53$9 ($mul).
+Removed top 3 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:56$10 ($mul).
+Removed top 16 bits (of 36) from port B of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+Removed top 18 bits (of 36) from port Y of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+Removed top 2 bits (of 20) from port B of cell nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+Removed top 2 bits (of 35) from port Y of cell nr_divider_18bit_pipelined.$mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+Removed top 18 bits (of 36) from wire nr_divider_18bit_pipelined.$sub$Lab03/nr_divider_18bit_pipelined.v:72$14_Y.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.final_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.stg1_D_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.stg2_X1_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.stg3_X2_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.x0_d_mult.
+Removed top 3 bits (of 36) from wire nr_divider_18bit_pipelined.x1_d_mult.
+
+5.10. Executing PEEPOPT pass (run peephole optimizers).
+
+5.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+5.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module nr_divider_18bit_pipelined:
+  creating $macc model for $mul$Lab03/nr_divider_18bit_pipelined.v:43$1 ($mul).
+  creating $macc model for $mul$Lab03/nr_divider_18bit_pipelined.v:46$2 ($mul).
+  creating $macc model for $mul$Lab03/nr_divider_18bit_pipelined.v:48$5 ($mul).
+  creating $macc model for $mul$Lab03/nr_divider_18bit_pipelined.v:51$6 ($mul).
+  creating $macc model for $mul$Lab03/nr_divider_18bit_pipelined.v:53$9 ($mul).
+  creating $macc model for $mul$Lab03/nr_divider_18bit_pipelined.v:56$10 ($mul).
+  creating $macc model for $sub$Lab03/nr_divider_18bit_pipelined.v:48$4 ($sub).
+  creating $macc model for $sub$Lab03/nr_divider_18bit_pipelined.v:53$8 ($sub).
+  creating $macc model for $sub$Lab03/nr_divider_18bit_pipelined.v:72$14 ($sub).
+  creating $alu model for $macc $sub$Lab03/nr_divider_18bit_pipelined.v:72$14.
+  creating $alu model for $macc $sub$Lab03/nr_divider_18bit_pipelined.v:53$8.
+  creating $alu model for $macc $sub$Lab03/nr_divider_18bit_pipelined.v:48$4.
+  creating $macc cell for $mul$Lab03/nr_divider_18bit_pipelined.v:56$10: $auto$alumacc.cc:365:replace_macc$138
+  creating $macc cell for $mul$Lab03/nr_divider_18bit_pipelined.v:53$9: $auto$alumacc.cc:365:replace_macc$139
+  creating $macc cell for $mul$Lab03/nr_divider_18bit_pipelined.v:51$6: $auto$alumacc.cc:365:replace_macc$140
+  creating $macc cell for $mul$Lab03/nr_divider_18bit_pipelined.v:48$5: $auto$alumacc.cc:365:replace_macc$141
+  creating $macc cell for $mul$Lab03/nr_divider_18bit_pipelined.v:46$2: $auto$alumacc.cc:365:replace_macc$142
+  creating $macc cell for $mul$Lab03/nr_divider_18bit_pipelined.v:43$1: $auto$alumacc.cc:365:replace_macc$143
+  creating $alu cell for $sub$Lab03/nr_divider_18bit_pipelined.v:48$4: $auto$alumacc.cc:495:replace_alu$144
+  creating $alu cell for $sub$Lab03/nr_divider_18bit_pipelined.v:53$8: $auto$alumacc.cc:495:replace_alu$147
+  creating $alu cell for $sub$Lab03/nr_divider_18bit_pipelined.v:72$14: $auto$alumacc.cc:495:replace_alu$150
+  created 3 $alu and 6 $macc cells.
+
+5.13. Executing SHARE pass (SAT-based resource sharing).
+
+5.14. Executing OPT pass (performing simple optimizations).
+
+5.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+5.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+5.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+5.15. Executing MEMORY pass.
+
+5.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+5.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+5.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+5.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+5.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+5.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+5.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+5.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+5.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.17. Executing OPT pass (performing simple optimizations).
+
+5.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+<suppressed ~4 debug messages>
+
+5.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+5.17.5. Finished fast OPT passes.
+
+5.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+5.19. Executing OPT pass (performing simple optimizations).
+
+5.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \nr_divider_18bit_pipelined..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+5.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \nr_divider_18bit_pipelined.
+Performed a total of 0 changes.
+
+5.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+Removed a total of 0 cells.
+
+5.19.6. Executing OPT_SHARE pass.
+
+5.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+
+5.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+5.20. Executing TECHMAP pass (map to technology primitives).
+
+5.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `\$connect'.
+Generating RTLIL representation for module `\$input_port'.
+Successfully finished Verilog frontend.
+
+5.20.2. Continuing TECHMAP pass.
+Using template $paramod$2d75df049ab3e532f3f00ff9c1c4e2e6fb51b90f\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add \divisor_D * 17'01111000011110001 (18x17 bits, signed)
+  add \stg1_X0 * \stg1_D (18x18 bits, signed)
+  add { $sub$Lab03/nr_divider_18bit_pipelined.v:48$4_Y [35] $sub$Lab03/nr_divider_18bit_pipelined.v:48$4_Y [17:0] } * \stg1_X0 (19x18 bits, signed)
+Using template $paramod$fbcf46ed94b87f5a0d4aa07686f54f8c76ced033\_90_alu for cells of type $alu.
+  add \stg2_X1 * \stg2_D (18x18 bits, signed)
+  add { $sub$Lab03/nr_divider_18bit_pipelined.v:53$8_Y [35] $sub$Lab03/nr_divider_18bit_pipelined.v:53$8_Y [17:0] } * \stg2_X1 (19x18 bits, signed)
+  add \stg3_A * \stg3_X2 (18x18 bits, signed)
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100001 for cells of type $fa.
+Using template $paramod$cc6a978c1b57cdb49efcec348c88d8e28bf1a01f\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010010 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~2485 debug messages>
+
+5.21. Executing OPT pass (performing simple optimizations).
+
+5.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+<suppressed ~8912 debug messages>
+
+5.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+<suppressed ~6444 debug messages>
+Removed a total of 2148 cells.
+
+5.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+/usr/lib/python3/dist-packages/xdot/ui/elements.py:174: UserWarning: Font family 'Times-Roman' is not available, using 'Ubuntu 11'
+  warnings.warn(msg)
+
+5.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 466 unused cells and 1669 unused wires.
+<suppressed ~467 debug messages>
+
+5.21.5. Finished fast OPT passes.
+
+5.22. Executing ABC pass (technology mapping using ABC).
+
+5.22.1. Extracting gate netlist of module `\nr_divider_18bit_pipelined' to `<abc-temp-dir>/input.blif'..
+
+5.22.1.1. Executed ABC.
+Extracted 11740 gates and 11866 wires to a netlist network with 126 inputs and 72 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 28 2025 21:19:44)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library /tmp/yosys-abc-NEKvF9/stdcells.genlib 
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:     1001
+ABC RESULTS:            ANDNOT cells:     3952
+ABC RESULTS:               MUX cells:        2
+ABC RESULTS:              NAND cells:      364
+ABC RESULTS:               NOR cells:      758
+ABC RESULTS:               NOT cells:      294
+ABC RESULTS:                OR cells:     1129
+ABC RESULTS:             ORNOT cells:      500
+ABC RESULTS:              XNOR cells:     1414
+ABC RESULTS:               XOR cells:     2478
+ABC RESULTS:        internal signals:    11668
+ABC RESULTS:           input signals:      126
+ABC RESULTS:          output signals:       72
+Removing temp directory.
+Removing global temp directory.
+
+5.23. Executing OPT pass (performing simple optimizations).
+
+5.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module nr_divider_18bit_pipelined.
+
+5.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\nr_divider_18bit_pipelined'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+5.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \nr_divider_18bit_pipelined..
+Removed 0 unused cells and 1374 unused wires.
+<suppressed ~5 debug messages>
+
+5.23.5. Finished fast OPT passes.
+
+5.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `nr_divider_18bit_pipelined'. Setting top module to nr_divider_18bit_pipelined.
+
+5.24.1. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+
+5.24.2. Analyzing design hierarchy..
+Top module:  \nr_divider_18bit_pipelined
+Removed 0 unused modules.
+
+5.25. Printing statistics.
+
+=== nr_divider_18bit_pipelined ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    11835 wires
+    12167 wire bits
+       22 public wires
+      337 public wire bits
+        7 ports
+       58 port bits
+    12050 cells
+     3952   $_ANDNOT_
+     1001   $_AND_
+      162   $_DFFE_PN0P_
+        4   $_DFF_PN0_
+        2   $_MUX_
+      361   $_NAND_
+      758   $_NOR_
+      292   $_NOT_
+      499   $_ORNOT_
+     1129   $_OR_
+     1413   $_XNOR_
+     2477   $_XOR_
+
+5.26. Executing CHECK pass (checking for obvious problems).
+Checking module nr_divider_18bit_pipelined...
+Found and reported 0 problems.
+
+6. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell gf180mcu_fd_sc_mcu7t5v0__dffnq_1 (noninv, pins=3, area=65.86) is a direct match for cell type $_DFF_N_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffq_1 (noninv, pins=3, area=63.66) is a direct match for cell type $_DFF_P_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffnrnq_1 (noninv, pins=4, area=74.64) is a direct match for cell type $_DFF_NN0_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffnsnq_1 (noninv, pins=4, area=79.03) is a direct match for cell type $_DFF_NN1_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffrnq_1 (noninv, pins=4, area=74.64) is a direct match for cell type $_DFF_PN0_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffsnq_1 (noninv, pins=4, area=79.03) is a direct match for cell type $_DFF_PN1_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_1 (noninv, pins=5, area=94.39) is a direct match for cell type $_DFFSR_NNN_.
+  cell gf180mcu_fd_sc_mcu7t5v0__dffrsnq_1 (noninv, pins=5, area=85.61) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    \gf180mcu_fd_sc_mcu7t5v0__dffnq_1 _DFF_N_ (.CLKN( C), .D( D), .Q( Q));
+    \gf180mcu_fd_sc_mcu7t5v0__dffq_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \gf180mcu_fd_sc_mcu7t5v0__dffnrnq_1 _DFF_NN0_ (.CLKN( C), .D( D), .Q( Q), .RN( R));
+    \gf180mcu_fd_sc_mcu7t5v0__dffnsnq_1 _DFF_NN1_ (.CLKN( C), .D( D), .Q( Q), .SETN( R));
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \gf180mcu_fd_sc_mcu7t5v0__dffrnq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RN( R));
+    \gf180mcu_fd_sc_mcu7t5v0__dffsnq_1 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SETN( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    \gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_1 _DFFSR_NNN_ (.CLKN( C), .D( D), .Q( Q), .RN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \gf180mcu_fd_sc_mcu7t5v0__dffrsnq_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .RN( R), .SETN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+6.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~12 debug messages>
+Mapping DFF cells in module `\nr_divider_18bit_pipelined':
+  mapped 166 $_DFF_PN0_ cells to \gf180mcu_fd_sc_mcu7t5v0__dffrnq_1 cells.
+
+7. Executing ABC pass (technology mapping using ABC).
+
+7.1. Extracting gate netlist of module `\nr_divider_18bit_pipelined' to `<abc-temp-dir>/input.blif'..
+
+7.1.1. Executed ABC.
+Extracted 12046 gates and 12248 wires to a netlist network with 202 inputs and 162 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 28 2025 21:19:44)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/FA685EF1685EAC5F/University Stuff/Advanced-Microelectronics-Lab/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.10 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__antenna" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__bufz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffnsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__dffsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__endcap" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fill_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fillcap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fillcap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fillcap_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fillcap_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__fillcap_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__filltie" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__hold".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__icgtn_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__icgtn_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__icgtn_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__icgtp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__icgtp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu7t5v0__icgtp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu7t5v0__invz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__latsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu7t5v0__sdffsnq_4".
+ABC: Library "gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00" from "/mnt/FA685EF1685EAC5F/University Stuff/Advanced-Microelectronics-Lab/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__tt_025C_5v00.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.16 sec
+ABC: Memory =   29.97 MB. Time =     0.16 sec
+ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu7t5v0__addf_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+7.1.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__and2_1 cells:      448
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__and3_1 cells:       52
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__and4_1 cells:       38
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__aoi211_1 cells:       20
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__aoi21_1 cells:      767
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__aoi221_1 cells:        8
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__aoi22_1 cells:      132
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__clkinv_1 cells:      672
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__mux2_1 cells:      118
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__nand2_1 cells:     2552
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__nand3_1 cells:      133
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__nand4_1 cells:       28
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__nor2_1 cells:     1172
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__nor3_1 cells:       72
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__nor4_1 cells:        5
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai211_1 cells:       18
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai21_1 cells:      685
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai221_1 cells:        6
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai222_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai22_1 cells:      177
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai31_1 cells:       41
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai32_1 cells:       41
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__oai33_1 cells:        2
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__or2_1 cells:      367
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__or3_1 cells:       46
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__or4_1 cells:        2
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__xnor2_1 cells:      834
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__xnor3_1 cells:      241
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__xor2_1 cells:     1453
+ABC RESULTS:   gf180mcu_fd_sc_mcu7t5v0__xor3_1 cells:      252
+ABC RESULTS:        internal signals:    11884
+ABC RESULTS:           input signals:      202
+ABC RESULTS:          output signals:      162
+Removing temp directory.
+Removing global temp directory.
+Removed 0 unused cells and 12180 unused wires.
+
+8. Executing Verilog backend.
+
+8.1. Executing BMUXMAP pass.
+
+8.2. Executing DEMUXMAP pass.
+Dumping module `\nr_divider_18bit_pipelined'.
+
+End of script. Logfile hash: c78ed9eb95, CPU: user 1.37s system 0.05s, MEM: 82.46 MB peak
+Yosys 0.57+218 (git sha1 7ebd97216, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+Time spent: 93% 2x abc (17 sec), 1% 2x write_verilog (0 sec), ...
+/usr/lib/python3/dist-packages/xdot/ui/elements.py:174: UserWarning: Font family 'Times-Roman' is not available, using 'Ubuntu 11'
+  warnings.warn(msg)
