@@ -1,0 +1,15 @@
+# running in fifo_cover/src/
+read -sv -formal Compare_ptrs.v
+read -sv -formal DD_SYN.v
+read -sv -formal FIFO_MEM.v
+read -sv -formal FIFO_TOP.v
+read -sv -formal rd_ptr_empty.v
+read -sv -formal wrt_ptr_full.v
+read -sv -formal fifo_formal.v
+prep -top fifo_formal
+
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

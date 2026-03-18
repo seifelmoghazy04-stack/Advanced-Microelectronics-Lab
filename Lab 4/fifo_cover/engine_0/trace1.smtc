@@ -1,0 +1,30 @@
+initial
+assume (= [$auto$async2sync.cc:107:execute$150] false)
+assume (= [$auto$async2sync.cc:116:execute$148] true)
+assume (= [$auto$async2sync.cc:116:execute$154] true)
+assume (= [DUT.ff_s1._witness_.anyinit_procdff_93] #b00000)
+assume (= [DUT.ff_s1._witness_.anyinit_procdff_98] #b00000)
+assume (= [DUT.ff_s2._witness_.anyinit_procdff_93] #b00000)
+assume (= [DUT.ff_s2._witness_.anyinit_procdff_98] #b00000)
+assume (= [DUT.rd_p._witness_.anyinit_procdff_88] #b00000)
+assume (= [DUT.wr_p._witness_.anyinit_procdff_83] #b10000)
+assume (= [was_full] false)
+assume (= (select [DUT.mem.mem] #b0000) #b00000000)
+
+state 0
+assume (= [rd_clk] false)
+assume (= [rd_en] false)
+assume (= [rd_rst] true)
+assume (= [w_en] false)
+assume (= [wr_data] #b00000000)
+assume (= [wrt_clk] false)
+assume (= [wrt_rst] true)
+
+state 1
+assume (= [rd_clk] false)
+assume (= [rd_en] false)
+assume (= [rd_rst] false)
+assume (= [w_en] false)
+assume (= [wr_data] #b00000000)
+assume (= [wrt_clk] false)
+assume (= [wrt_rst] false)

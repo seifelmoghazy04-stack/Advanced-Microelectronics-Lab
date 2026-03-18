@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-03-14T16:49:03" hostname="ASICLab" package="fifo" id="0" name="bmc" tests="5" errors="0" failures="0" time="0" skipped="2">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="bmc" name="build execution" time="0">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in fifo_formal at fifo_formal.v:45.5-45.30" time="0" type="ASSERT" location="fifo_formal.v:45.5-45.30" id="_witness_.check_assert_fifo_formal_v_45_10">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in fifo_formal at fifo_formal.v:48.5-48.33" time="0" type="ASSERT" location="fifo_formal.v:48.5-48.33" id="_witness_.check_assert_fifo_formal_v_48_14">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in fifo_formal at fifo_formal.v:54.5-54.37" time="0" type="ASSERT" location="fifo_formal.v:54.5-54.37" id="_witness_.check_assert_fifo_formal_v_54_18">
+</testcase>
+<testcase classname="bmc" name="Property COVER in fifo_formal at fifo_formal.v:58.27-58.40" time="0" type="COVER" location="fifo_formal.v:58.27-58.40" id="_witness_.check_cover_fifo_formal_v_58_21">
+<skipped />
+</testcase>
+<testcase classname="bmc" name="Property COVER in fifo_formal at fifo_formal.v:69.26-69.53" time="0" type="COVER" location="fifo_formal.v:69.26-69.53" id="_witness_.check_cover_fifo_formal_v_69_24">
+<skipped />
+</testcase>
+<system-out>SBY 16:49:02 [fifo_bmc] Removing directory '/home/asiclab/FIFO/fifo_bmc'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/Compare_ptrs.v' to '/home/asiclab/FIFO/fifo_bmc/src/Compare_ptrs.v'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/DD_SYN.v' to '/home/asiclab/FIFO/fifo_bmc/src/DD_SYN.v'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/FIFO_MEM.v' to '/home/asiclab/FIFO/fifo_bmc/src/FIFO_MEM.v'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/FIFO_TOP.v' to '/home/asiclab/FIFO/fifo_bmc/src/FIFO_TOP.v'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/rd_ptr_empty.v' to '/home/asiclab/FIFO/fifo_bmc/src/rd_ptr_empty.v'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/wrt_ptr_full.v' to '/home/asiclab/FIFO/fifo_bmc/src/wrt_ptr_full.v'.
+SBY 16:49:02 [fifo_bmc] Copy '/home/asiclab/FIFO/fifo_formal.v' to '/home/asiclab/FIFO/fifo_bmc/src/fifo_formal.v'.
+SBY 16:49:02 [fifo_bmc] engine_0: smtbmc
+SBY 16:49:02 [fifo_bmc] base: starting process &quot;cd fifo_bmc/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 16:49:02 [fifo_bmc] base: fifo_formal.v:54: Warning: Identifier `\dut.wrt_ptr' is implicitly declared.
+SBY 16:49:02 [fifo_bmc] base: Warning: Wire fifo_formal.\dut.wrt_ptr is used but has no driver.
+SBY 16:49:02 [fifo_bmc] base: finished (returncode=0)
+SBY 16:49:02 [fifo_bmc] prep: starting process &quot;cd fifo_bmc/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 16:49:02 [fifo_bmc] prep: Warning: Wire fifo_formal.\dut.wrt_ptr is used but has no driver.
+SBY 16:49:02 [fifo_bmc] prep: finished (returncode=0)
+SBY 16:49:03 [fifo_bmc] smt2: starting process &quot;cd fifo_bmc/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 16:49:03 [fifo_bmc] smt2: finished (returncode=0)
+SBY 16:49:03 [fifo_bmc] engine_0: starting process &quot;cd fifo_bmc; yosys-smtbmc --presat --unroll --noprogress -t 10  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Solver: yices
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 1..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 1..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 2..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 2..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 3..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 3..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 4..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 4..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 5..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 5..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 6..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 6..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 7..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 7..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 8..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 8..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assumptions in step 9..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Checking assertions in step 9..
+SBY 16:49:03 [fifo_bmc] engine_0: ##   0:00:00  Status: passed
+SBY 16:49:03 [fifo_bmc] engine_0: finished (returncode=0)
+SBY 16:49:03 [fifo_bmc] engine_0: Status returned by engine: pass
+SBY 16:49:03 [fifo_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 16:49:03 [fifo_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 16:49:03 [fifo_bmc] summary: engine_0 (smtbmc) returned pass
+SBY 16:49:03 [fifo_bmc] summary: engine_0 did not produce any traces
+SBY 16:49:03 [fifo_bmc] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

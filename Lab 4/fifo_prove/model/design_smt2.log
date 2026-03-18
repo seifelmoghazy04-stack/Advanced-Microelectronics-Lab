@@ -1,0 +1,233 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `design_smt2.ys' --
+
+1. Executing RTLIL frontend.
+Input filename: design_prep.il
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `fifo_formal'. Setting top module to fifo_formal.
+
+2.1. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+Used module:         \Compare_ptrs
+Used module:         \DD_SYN
+Used module:         \FIFO_MEM
+Used module:         \rd_ptr_empty
+Used module:         \wrt_ptr_full
+
+2.2. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+Used module:         \Compare_ptrs
+Used module:         \DD_SYN
+Used module:         \FIFO_MEM
+Used module:         \rd_ptr_empty
+Used module:         \wrt_ptr_full
+Removed 0 unused modules.
+Module fifo_formal directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3. Executing FORMALFF pass.
+
+4. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+5. Printing statistics.
+
+=== Compare_ptrs ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       10 wires
+       26 wire bits
+        6 public wires
+       22 public wire bits
+        6 ports
+       22 port bits
+        6 cells
+        2   $eq
+        1   $logic_and
+        2   $mux
+        1   $ne
+
+=== DD_SYN ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       10 wires
+       38 wire bits
+        7 public wires
+       27 public wire bits
+        4 ports
+       12 port bits
+        8 cells
+        2   $anyinit
+        1   $assume
+        4   $mux
+        1   $not
+
+=== FIFO_MEM ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+       63 wire bits
+        9 public wires
+       41 public wire bits
+        7 ports
+       29 port bits
+        8 cells
+        2   $anyseq
+        1   $logic_and
+        1   $logic_not
+        1   $mem_v2
+        3   $mux
+
+=== FIFO_TOP ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       20 wires
+       58 wire bits
+       18 public wires
+       56 public wire bits
+       10 ports
+       24 port bits
+        4 cells
+        2   $assume
+        2   $not
+        6 submodules
+        1   Compare_ptrs
+        2   DD_SYN
+        1   FIFO_MEM
+        1   rd_ptr_empty
+        1   wrt_ptr_full
+
+=== fifo_formal ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       23 wires
+       37 wire bits
+       11 public wires
+       25 public wire bits
+       10 ports
+       24 port bits
+       22 cells
+        1   $anyseq
+        3   $assert
+        6   $assume
+        4   $ff
+        1   $initstate
+        2   $logic_and
+        2   $logic_not
+        1   $lt
+        2   $not
+        1 submodules
+        1   FIFO_TOP
+
+=== rd_ptr_empty ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+       38 wire bits
+        8 public wires
+       20 public wire bits
+        7 ports
+       15 port bits
+       10 cells
+        1   $add
+        1   $anyinit
+        1   $assume
+        1   $logic_and
+        1   $logic_not
+        3   $mux
+        1   $not
+        1   $xor
+
+=== wrt_ptr_full ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+       38 wire bits
+        8 public wires
+       20 public wire bits
+        7 ports
+       15 port bits
+       10 cells
+        1   $add
+        1   $anyinit
+        1   $assume
+        1   $logic_and
+        1   $logic_not
+        3   $mux
+        1   $not
+        1   $xor
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+       76 fifo_formal
+        4 FIFO_TOP
+        6   Compare_ptrs
+        8   DD_SYN
+        8   FIFO_MEM
+       10   rd_ptr_empty
+       10   wrt_ptr_full
+
+        +----------Count including submodules.
+        | 
+      115 wires
+      336 wire bits
+       74 public wires
+      238 public wire bits
+       55 ports
+      153 port bits
+        - memories
+        - memory bits
+        - processes
+       76 cells
+        2   $add
+        6   $anyinit
+        3   $anyseq
+        3   $assert
+       12   $assume
+        2   $eq
+        4   $ff
+        1   $initstate
+        6   $logic_and
+        5   $logic_not
+        1   $lt
+        1   $mem_v2
+       19   $mux
+        1   $ne
+        8   $not
+        2   $xor
+        1 submodules
+        1   FIFO_TOP
+
+6. Executing SMT2 backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Creating SMT-LIBv2 representation of module wrt_ptr_full.
+Creating SMT-LIBv2 representation of module rd_ptr_empty.
+Creating SMT-LIBv2 representation of module FIFO_MEM.
+Creating SMT-LIBv2 representation of module DD_SYN.
+Creating SMT-LIBv2 representation of module Compare_ptrs.
+Creating SMT-LIBv2 representation of module FIFO_TOP.
+Creating SMT-LIBv2 representation of module fifo_formal.
+
+End of script. Logfile hash: 456efc2e29, CPU: user 0.01s system 0.01s, MEM: 15.64 MB peak
+Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+Time spent: 56% 2x write_smt2 (0 sec), 18% 1x stat (0 sec), ...

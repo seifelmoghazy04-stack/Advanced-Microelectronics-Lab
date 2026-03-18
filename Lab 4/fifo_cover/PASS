@@ -1,0 +1,9 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+engine_0 (smtbmc) returned pass
+cover trace: engine_0/trace0.vcd
+cover trace: engine_0/trace0.yw
+  reached cover statement fifo_formal._witness_.check_cover_fifo_formal_v_69_24 at fifo_formal.v:69.26-69.53 step 1
+cover trace: engine_0/trace1.vcd
+cover trace: engine_0/trace1.yw
+  reached cover statement fifo_formal._witness_.check_cover_fifo_formal_v_58_21 at fifo_formal.v:58.27-58.40 step 1

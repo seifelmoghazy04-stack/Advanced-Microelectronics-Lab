@@ -1,0 +1,723 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing Verilog-2005 frontend: Compare_ptrs.v
+Parsing formal SystemVerilog input from `Compare_ptrs.v' to AST representation.
+Storing AST representation for module `$abstract\Compare_ptrs'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: DD_SYN.v
+Parsing formal SystemVerilog input from `DD_SYN.v' to AST representation.
+Storing AST representation for module `$abstract\DD_SYN'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: FIFO_MEM.v
+Parsing formal SystemVerilog input from `FIFO_MEM.v' to AST representation.
+Storing AST representation for module `$abstract\FIFO_MEM'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: FIFO_TOP.v
+Parsing formal SystemVerilog input from `FIFO_TOP.v' to AST representation.
+Storing AST representation for module `$abstract\FIFO_TOP'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rd_ptr_empty.v
+Parsing formal SystemVerilog input from `rd_ptr_empty.v' to AST representation.
+Storing AST representation for module `$abstract\rd_ptr_empty'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: wrt_ptr_full.v
+Parsing formal SystemVerilog input from `wrt_ptr_full.v' to AST representation.
+Storing AST representation for module `$abstract\wrt_ptr_full'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: fifo_formal.v
+Parsing formal SystemVerilog input from `fifo_formal.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_formal'.
+Successfully finished Verilog frontend.
+
+8. Executing PREP pass.
+
+8.1. Executing HIERARCHY pass (managing design hierarchy).
+
+8.2. Executing AST frontend in derive mode using pre-parsed AST for module `\fifo_formal'.
+Generating RTLIL representation for module `\fifo_formal'.
+fifo_formal.v:54: Warning: Identifier `\dut.wrt_ptr' is implicitly declared.
+
+8.2.1. Analyzing design hierarchy..
+Top module:  \fifo_formal
+
+8.2.2. Executing AST frontend in derive mode using pre-parsed AST for module `\FIFO_TOP'.
+Generating RTLIL representation for module `\FIFO_TOP'.
+
+8.2.3. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+
+8.2.4. Executing AST frontend in derive mode using pre-parsed AST for module `\FIFO_MEM'.
+Generating RTLIL representation for module `\FIFO_MEM'.
+
+8.2.5. Executing AST frontend in derive mode using pre-parsed AST for module `\Compare_ptrs'.
+Generating RTLIL representation for module `\Compare_ptrs'.
+
+8.2.6. Executing AST frontend in derive mode using pre-parsed AST for module `\DD_SYN'.
+Generating RTLIL representation for module `\DD_SYN'.
+
+8.2.7. Executing AST frontend in derive mode using pre-parsed AST for module `\rd_ptr_empty'.
+Generating RTLIL representation for module `\rd_ptr_empty'.
+
+8.2.8. Executing AST frontend in derive mode using pre-parsed AST for module `\wrt_ptr_full'.
+Generating RTLIL representation for module `\wrt_ptr_full'.
+
+8.2.9. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+Used module:         \FIFO_MEM
+Used module:         \Compare_ptrs
+Used module:         \DD_SYN
+Used module:         \rd_ptr_empty
+Used module:         \wrt_ptr_full
+
+8.2.10. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+Used module:         \FIFO_MEM
+Used module:         \Compare_ptrs
+Used module:         \DD_SYN
+Used module:         \rd_ptr_empty
+Used module:         \wrt_ptr_full
+Removing unused module `$abstract\fifo_formal'.
+Removing unused module `$abstract\wrt_ptr_full'.
+Removing unused module `$abstract\rd_ptr_empty'.
+Removing unused module `$abstract\FIFO_TOP'.
+Removing unused module `$abstract\FIFO_MEM'.
+Removing unused module `$abstract\DD_SYN'.
+Removing unused module `$abstract\Compare_ptrs'.
+Removed 7 unused modules.
+Module fifo_formal directly or indirectly contains formal properties -> setting "keep" attribute.
+
+8.3. Executing PROC pass (convert processes to netlists).
+
+8.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$wrt_ptr_full.v:11$57 in module wrt_ptr_full.
+Marked 1 switch rules as full_case in process $proc$rd_ptr_empty.v:11$50 in module rd_ptr_empty.
+Marked 1 switch rules as full_case in process $proc$DD_SYN.v:10$48 in module DD_SYN.
+Marked 1 switch rules as full_case in process $proc$FIFO_MEM.v:13$32 in module FIFO_MEM.
+Removed a total of 0 dead cases.
+
+8.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 11 redundant assignments.
+Promoted 12 assignments to connections.
+
+8.3.4. Executing PROC_INIT pass (extract init attributes).
+
+8.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\wrt_ptr_full.$proc$wrt_ptr_full.v:11$57'.
+Found async reset \rst in `\rd_ptr_empty.$proc$rd_ptr_empty.v:11$50'.
+Found async reset \rst_n in `\DD_SYN.$proc$DD_SYN.v:10$48'.
+
+8.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~4 debug messages>
+
+8.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\wrt_ptr_full.$proc$wrt_ptr_full.v:11$57'.
+     1/1: $0\wrt_ptr[4:0]
+Creating decoders for process `\rd_ptr_empty.$proc$rd_ptr_empty.v:11$50'.
+     1/1: $0\rd_ptr[4:0]
+Creating decoders for process `\DD_SYN.$proc$DD_SYN.v:10$48'.
+     1/2: $0\sync_data[4:0]
+     2/2: $0\sync1[4:0]
+Creating decoders for process `\FIFO_MEM.$proc$FIFO_MEM.v:13$32'.
+     1/3: $1$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$40
+     2/3: $1$memwr$\mem$FIFO_MEM.v:15$31_DATA[7:0]$39
+     3/3: $1$memwr$\mem$FIFO_MEM.v:15$31_ADDR[3:0]$38
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:31$26'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:69$23'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:65$22'.
+     1/1: $0\was_full[0:0]
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:58$20'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:53$17'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:47$13'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:44$9'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:39$5'.
+Creating decoders for process `\fifo_formal.$proc$fifo_formal.v:36$1'.
+
+8.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+8.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\wrt_ptr_full.\wrt_ptr' using process `\wrt_ptr_full.$proc$wrt_ptr_full.v:11$57'.
+  created $adff cell `$procdff$83' with positive edge clock and positive level reset.
+Creating register for signal `\rd_ptr_empty.\rd_ptr' using process `\rd_ptr_empty.$proc$rd_ptr_empty.v:11$50'.
+  created $adff cell `$procdff$88' with positive edge clock and positive level reset.
+Creating register for signal `\DD_SYN.\sync_data' using process `\DD_SYN.$proc$DD_SYN.v:10$48'.
+  created $adff cell `$procdff$93' with positive edge clock and positive level reset.
+Creating register for signal `\DD_SYN.\sync1' using process `\DD_SYN.$proc$DD_SYN.v:10$48'.
+  created $adff cell `$procdff$98' with positive edge clock and positive level reset.
+Creating register for signal `\FIFO_MEM.$memwr$\mem$FIFO_MEM.v:15$31_ADDR' using process `\FIFO_MEM.$proc$FIFO_MEM.v:13$32'.
+  created $dff cell `$procdff$99' with positive edge clock.
+Creating register for signal `\FIFO_MEM.$memwr$\mem$FIFO_MEM.v:15$31_DATA' using process `\FIFO_MEM.$proc$FIFO_MEM.v:13$32'.
+  created $dff cell `$procdff$100' with positive edge clock.
+Creating register for signal `\FIFO_MEM.$memwr$\mem$FIFO_MEM.v:15$31_EN' using process `\FIFO_MEM.$proc$FIFO_MEM.v:13$32'.
+  created $dff cell `$procdff$101' with positive edge clock.
+Creating register for signal `\fifo_formal.\was_full' using process `\fifo_formal.$proc$fifo_formal.v:65$22'.
+  created $dff cell `$procdff$102' with positive edge clock.
+
+8.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+8.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\wrt_ptr_full.$proc$wrt_ptr_full.v:11$57'.
+Removing empty process `wrt_ptr_full.$proc$wrt_ptr_full.v:11$57'.
+Found and cleaned up 1 empty switch in `\rd_ptr_empty.$proc$rd_ptr_empty.v:11$50'.
+Removing empty process `rd_ptr_empty.$proc$rd_ptr_empty.v:11$50'.
+Removing empty process `DD_SYN.$proc$DD_SYN.v:10$48'.
+Found and cleaned up 1 empty switch in `\FIFO_MEM.$proc$FIFO_MEM.v:13$32'.
+Removing empty process `FIFO_MEM.$proc$FIFO_MEM.v:13$32'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:31$26'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:69$23'.
+Found and cleaned up 1 empty switch in `\fifo_formal.$proc$fifo_formal.v:65$22'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:65$22'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:58$20'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:53$17'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:47$13'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:44$9'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:39$5'.
+Removing empty process `fifo_formal.$proc$fifo_formal.v:36$1'.
+Cleaned up 4 empty switches.
+
+8.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module wrt_ptr_full.
+<suppressed ~3 debug messages>
+Optimizing module rd_ptr_empty.
+<suppressed ~3 debug messages>
+Optimizing module DD_SYN.
+<suppressed ~4 debug messages>
+Optimizing module Compare_ptrs.
+Optimizing module FIFO_MEM.
+Optimizing module FIFO_TOP.
+Optimizing module fifo_formal.
+<suppressed ~2 debug messages>
+
+8.4. Executing FUTURE pass.
+
+8.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module wrt_ptr_full.
+Optimizing module rd_ptr_empty.
+Optimizing module DD_SYN.
+Optimizing module Compare_ptrs.
+Optimizing module FIFO_MEM.
+Optimizing module FIFO_TOP.
+Optimizing module fifo_formal.
+
+8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \wrt_ptr_full..
+Finding unused cells or wires in module \rd_ptr_empty..
+Finding unused cells or wires in module \DD_SYN..
+Finding unused cells or wires in module \Compare_ptrs..
+Finding unused cells or wires in module \FIFO_MEM..
+Finding unused cells or wires in module \FIFO_TOP..
+Finding unused cells or wires in module \fifo_formal..
+Removed 10 unused cells and 49 unused wires.
+<suppressed ~16 debug messages>
+
+8.7. Executing CHECK pass (checking for obvious problems).
+Checking module wrt_ptr_full...
+Checking module rd_ptr_empty...
+Checking module DD_SYN...
+Checking module Compare_ptrs...
+Checking module FIFO_MEM...
+Checking module FIFO_TOP...
+Checking module fifo_formal...
+Warning: Wire fifo_formal.\dut.wrt_ptr is used but has no driver.
+Found and reported 1 problems.
+
+8.8. Executing OPT pass (performing simple optimizations).
+
+8.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module wrt_ptr_full.
+Optimizing module rd_ptr_empty.
+Optimizing module DD_SYN.
+Optimizing module Compare_ptrs.
+Optimizing module FIFO_MEM.
+Optimizing module FIFO_TOP.
+Optimizing module fifo_formal.
+
+8.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\wrt_ptr_full'.
+Computing hashes of 6 cells of `\wrt_ptr_full'.
+Finding duplicate cells in `\wrt_ptr_full'.
+Finding identical cells in module `\rd_ptr_empty'.
+Computing hashes of 6 cells of `\rd_ptr_empty'.
+Finding duplicate cells in `\rd_ptr_empty'.
+Finding identical cells in module `\DD_SYN'.
+Computing hashes of 2 cells of `\DD_SYN'.
+Finding duplicate cells in `\DD_SYN'.
+Finding identical cells in module `\Compare_ptrs'.
+Computing hashes of 6 cells of `\Compare_ptrs'.
+Finding duplicate cells in `\Compare_ptrs'.
+Finding identical cells in module `\FIFO_MEM'.
+Computing hashes of 7 cells of `\FIFO_MEM'.
+Finding duplicate cells in `\FIFO_MEM'.
+Finding identical cells in module `\FIFO_TOP'.
+Computing hashes of 6 cells of `\FIFO_TOP'.
+Finding duplicate cells in `\FIFO_TOP'.
+Finding identical cells in module `\fifo_formal'.
+Computing hashes of 22 cells of `\fifo_formal'.
+Finding duplicate cells in `\fifo_formal'.
+Computing hashes of 20 cells of `\fifo_formal'.
+Finding duplicate cells in `\fifo_formal'.
+Computing hashes of 18 cells of `\fifo_formal'.
+Finding duplicate cells in `\fifo_formal'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+8.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \wrt_ptr_full..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rd_ptr_empty..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \DD_SYN..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \Compare_ptrs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \FIFO_MEM..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \FIFO_TOP..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fifo_formal..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+8.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \wrt_ptr_full.
+  Optimizing cells in module \rd_ptr_empty.
+  Optimizing cells in module \DD_SYN.
+  Optimizing cells in module \Compare_ptrs.
+  Optimizing cells in module \FIFO_MEM.
+    Consolidated identical input bits for $mux cell $procmux$69:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0]
+      New connections: $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [7:1] = { $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] $0$memwr$\mem$FIFO_MEM.v:15$31_EN[7:0]$35 [0] }
+  Optimizing cells in module \FIFO_MEM.
+  Optimizing cells in module \FIFO_TOP.
+  Optimizing cells in module \fifo_formal.
+Performed a total of 1 changes.
+
+8.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\wrt_ptr_full'.
+Computing hashes of 6 cells of `\wrt_ptr_full'.
+Finding duplicate cells in `\wrt_ptr_full'.
+Finding identical cells in module `\rd_ptr_empty'.
+Computing hashes of 6 cells of `\rd_ptr_empty'.
+Finding duplicate cells in `\rd_ptr_empty'.
+Finding identical cells in module `\DD_SYN'.
+Computing hashes of 2 cells of `\DD_SYN'.
+Finding duplicate cells in `\DD_SYN'.
+Finding identical cells in module `\Compare_ptrs'.
+Computing hashes of 6 cells of `\Compare_ptrs'.
+Finding duplicate cells in `\Compare_ptrs'.
+Finding identical cells in module `\FIFO_MEM'.
+Computing hashes of 7 cells of `\FIFO_MEM'.
+Finding duplicate cells in `\FIFO_MEM'.
+Finding identical cells in module `\FIFO_TOP'.
+Computing hashes of 6 cells of `\FIFO_TOP'.
+Finding duplicate cells in `\FIFO_TOP'.
+Finding identical cells in module `\fifo_formal'.
+Computing hashes of 18 cells of `\fifo_formal'.
+Finding duplicate cells in `\fifo_formal'.
+Removed a total of 0 cells.
+
+8.8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \wrt_ptr_full..
+Finding unused cells or wires in module \rd_ptr_empty..
+Finding unused cells or wires in module \DD_SYN..
+Finding unused cells or wires in module \Compare_ptrs..
+Finding unused cells or wires in module \FIFO_MEM..
+Finding unused cells or wires in module \FIFO_TOP..
+Finding unused cells or wires in module \fifo_formal..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+8.8.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module wrt_ptr_full.
+Optimizing module rd_ptr_empty.
+Optimizing module DD_SYN.
+Optimizing module Compare_ptrs.
+Optimizing module FIFO_MEM.
+Optimizing module FIFO_TOP.
+Optimizing module fifo_formal.
+
+8.8.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.8.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \wrt_ptr_full..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rd_ptr_empty..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \DD_SYN..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \Compare_ptrs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \FIFO_MEM..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \FIFO_TOP..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fifo_formal..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+8.8.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \wrt_ptr_full.
+  Optimizing cells in module \rd_ptr_empty.
+  Optimizing cells in module \DD_SYN.
+  Optimizing cells in module \Compare_ptrs.
+  Optimizing cells in module \FIFO_MEM.
+  Optimizing cells in module \FIFO_TOP.
+  Optimizing cells in module \fifo_formal.
+Performed a total of 0 changes.
+
+8.8.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\wrt_ptr_full'.
+Computing hashes of 6 cells of `\wrt_ptr_full'.
+Finding duplicate cells in `\wrt_ptr_full'.
+Finding identical cells in module `\rd_ptr_empty'.
+Computing hashes of 6 cells of `\rd_ptr_empty'.
+Finding duplicate cells in `\rd_ptr_empty'.
+Finding identical cells in module `\DD_SYN'.
+Computing hashes of 2 cells of `\DD_SYN'.
+Finding duplicate cells in `\DD_SYN'.
+Finding identical cells in module `\Compare_ptrs'.
+Computing hashes of 6 cells of `\Compare_ptrs'.
+Finding duplicate cells in `\Compare_ptrs'.
+Finding identical cells in module `\FIFO_MEM'.
+Computing hashes of 7 cells of `\FIFO_MEM'.
+Finding duplicate cells in `\FIFO_MEM'.
+Finding identical cells in module `\FIFO_TOP'.
+Computing hashes of 6 cells of `\FIFO_TOP'.
+Finding duplicate cells in `\FIFO_TOP'.
+Finding identical cells in module `\fifo_formal'.
+Computing hashes of 18 cells of `\fifo_formal'.
+Finding duplicate cells in `\fifo_formal'.
+Removed a total of 0 cells.
+
+8.8.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \wrt_ptr_full..
+Finding unused cells or wires in module \rd_ptr_empty..
+Finding unused cells or wires in module \DD_SYN..
+Finding unused cells or wires in module \Compare_ptrs..
+Finding unused cells or wires in module \FIFO_MEM..
+Finding unused cells or wires in module \FIFO_TOP..
+Finding unused cells or wires in module \fifo_formal..
+
+8.8.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module wrt_ptr_full.
+Optimizing module rd_ptr_empty.
+Optimizing module DD_SYN.
+Optimizing module Compare_ptrs.
+Optimizing module FIFO_MEM.
+Optimizing module FIFO_TOP.
+Optimizing module fifo_formal.
+
+8.8.14. Finished fast OPT passes. (There is nothing left to do.)
+
+8.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 5) from port A of cell wrt_ptr_full.$xor$wrt_ptr_full.v:22$63 ($xor).
+Removed top 1 bits (of 5) from port A of cell rd_ptr_empty.$xor$rd_ptr_empty.v:24$56 ($xor).
+Removed top 26 bits (of 32) from port B of cell fifo_formal.$lt$fifo_formal.v:54$19 ($lt).
+
+8.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \wrt_ptr_full..
+Finding unused cells or wires in module \rd_ptr_empty..
+Finding unused cells or wires in module \DD_SYN..
+Finding unused cells or wires in module \Compare_ptrs..
+Finding unused cells or wires in module \FIFO_MEM..
+Finding unused cells or wires in module \FIFO_TOP..
+Finding unused cells or wires in module \fifo_formal..
+
+8.11. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.12. Executing OPT pass (performing simple optimizations).
+
+8.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module wrt_ptr_full.
+Optimizing module rd_ptr_empty.
+Optimizing module DD_SYN.
+Optimizing module Compare_ptrs.
+Optimizing module FIFO_MEM.
+Optimizing module FIFO_TOP.
+Optimizing module fifo_formal.
+
+8.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\wrt_ptr_full'.
+Computing hashes of 6 cells of `\wrt_ptr_full'.
+Finding duplicate cells in `\wrt_ptr_full'.
+Finding identical cells in module `\rd_ptr_empty'.
+Computing hashes of 6 cells of `\rd_ptr_empty'.
+Finding duplicate cells in `\rd_ptr_empty'.
+Finding identical cells in module `\DD_SYN'.
+Computing hashes of 2 cells of `\DD_SYN'.
+Finding duplicate cells in `\DD_SYN'.
+Finding identical cells in module `\Compare_ptrs'.
+Computing hashes of 6 cells of `\Compare_ptrs'.
+Finding duplicate cells in `\Compare_ptrs'.
+Finding identical cells in module `\FIFO_MEM'.
+Computing hashes of 6 cells of `\FIFO_MEM'.
+Finding duplicate cells in `\FIFO_MEM'.
+Finding identical cells in module `\FIFO_TOP'.
+Computing hashes of 6 cells of `\FIFO_TOP'.
+Finding duplicate cells in `\FIFO_TOP'.
+Finding identical cells in module `\fifo_formal'.
+Computing hashes of 18 cells of `\fifo_formal'.
+Finding duplicate cells in `\fifo_formal'.
+Removed a total of 0 cells.
+
+8.12.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \wrt_ptr_full..
+Finding unused cells or wires in module \rd_ptr_empty..
+Finding unused cells or wires in module \DD_SYN..
+Finding unused cells or wires in module \Compare_ptrs..
+Finding unused cells or wires in module \FIFO_MEM..
+Finding unused cells or wires in module \FIFO_TOP..
+Finding unused cells or wires in module \fifo_formal..
+
+8.12.4. Finished fast OPT passes.
+
+8.13. Executing SORT pass.
+
+8.14. Printing statistics.
+
+=== Compare_ptrs ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       10 wires
+       26 wire bits
+        6 public wires
+       22 public wire bits
+        6 ports
+       22 port bits
+        6 cells
+        2   $eq
+        1   $logic_and
+        2   $mux
+        1   $ne
+
+=== DD_SYN ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+       17 wire bits
+        5 public wires
+       17 public wire bits
+        4 ports
+       12 port bits
+        2 cells
+        2   $adff
+
+=== FIFO_MEM ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       12 wires
+       51 wire bits
+        7 public wires
+       29 public wire bits
+        7 ports
+       29 port bits
+        6 cells
+        1   $logic_and
+        1   $logic_not
+        1   $mem_v2
+        3   $mux
+
+=== FIFO_TOP ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       18 wires
+       56 wire bits
+       18 public wires
+       56 public wire bits
+       10 ports
+       24 port bits
+        6 submodules
+        1   Compare_ptrs
+        2   DD_SYN
+        1   FIFO_MEM
+        1   rd_ptr_empty
+        1   wrt_ptr_full
+
+=== fifo_formal ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       33 wire bits
+       12 public wires
+       26 public wire bits
+       10 ports
+       24 port bits
+       17 cells
+        9   $check
+        1   $dff
+        3   $logic_and
+        2   $logic_not
+        1   $lt
+        1   $mux
+        1 submodules
+        1   FIFO_TOP
+
+=== rd_ptr_empty ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       11 wires
+       27 wire bits
+        7 public wires
+       15 public wire bits
+        7 ports
+       15 port bits
+        6 cells
+        1   $add
+        1   $adff
+        1   $logic_and
+        1   $logic_not
+        1   $mux
+        1   $xor
+
+=== wrt_ptr_full ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       11 wires
+       27 wire bits
+        7 public wires
+       15 public wire bits
+        7 ports
+       15 port bits
+        6 cells
+        1   $add
+        1   $adff
+        1   $logic_and
+        1   $logic_not
+        1   $mux
+        1   $xor
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+       45 fifo_formal
+        6   Compare_ptrs
+        2   DD_SYN
+        6   FIFO_MEM
+        6   rd_ptr_empty
+        6   wrt_ptr_full
+
+        +----------Count including submodules.
+        | 
+       91 wires
+      254 wire bits
+       67 public wires
+      197 public wire bits
+       55 ports
+      153 port bits
+        - memories
+        - memory bits
+        - processes
+       45 cells
+        2   $add
+        6   $adff
+        9   $check
+        1   $dff
+        2   $eq
+        7   $logic_and
+        5   $logic_not
+        1   $lt
+        1   $mem_v2
+        8   $mux
+        1   $ne
+        2   $xor
+        1 submodules
+        1   FIFO_TOP
+
+8.15. Executing CHECK pass (checking for obvious problems).
+Checking module Compare_ptrs...
+Checking module DD_SYN...
+Checking module FIFO_MEM...
+Checking module FIFO_TOP...
+Checking module fifo_formal...
+Warning: Wire fifo_formal.\dut.wrt_ptr is used but has no driver.
+Checking module rd_ptr_empty...
+Checking module wrt_ptr_full...
+Found and reported 1 problems.
+
+9. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `fifo_formal'. Setting top module to fifo_formal.
+
+9.1. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+Used module:         \Compare_ptrs
+Used module:         \DD_SYN
+Used module:         \FIFO_MEM
+Used module:         \rd_ptr_empty
+Used module:         \wrt_ptr_full
+
+9.2. Analyzing design hierarchy..
+Top module:  \fifo_formal
+Used module:     \FIFO_TOP
+Used module:         \Compare_ptrs
+Used module:         \DD_SYN
+Used module:         \FIFO_MEM
+Used module:         \rd_ptr_empty
+Used module:         \wrt_ptr_full
+Removed 0 unused modules.
+Module fifo_formal directly or indirectly contains formal properties -> setting "keep" attribute.
+
+10. Executing jny backend.
+
+11. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+Warnings: 2 unique messages, 3 total
+End of script. Logfile hash: 75b3c27ea6, CPU: user 0.03s system 0.01s, MEM: 16.84 MB peak
+Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+Time spent: 17% 5x opt_clean (0 sec), 17% 2x hierarchy (0 sec), ...
