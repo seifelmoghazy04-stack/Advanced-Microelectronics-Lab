@@ -1,0 +1,27 @@
+// Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+// Date        : Wed Mar  4 21:43:00 2026
+// Host        : DESKTOP-13V46NK running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode synth_stub {d:/University Stuff/Vivado/10th
+//               Lab/lab_1/lab_1.srcs/sources_1/bd/soc_task_1/ip/soc_task_1_MAC_big_hls_0_1/soc_task_1_MAC_big_hls_0_1_stub.v}
+// Design      : soc_task_1_MAC_big_hls_0_1
+// Purpose     : Stub declaration of top-level module interface
+// Device      : xc7z020clg484-1
+// --------------------------------------------------------------------------------
+
+// This empty module with port declaration file causes synthesis tools to infer a black box for IP.
+// The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
+// Please paste the declaration into a Verilog source file or add the file as an additional source.
+(* x_core_info = "MAC_big_hls,Vivado 2020.1" *)
+module soc_task_1_MAC_big_hls_0_1(ap_clk, rst_r, valid, idx, a, w, done, res)
+/* synthesis syn_black_box black_box_pad_pin="ap_clk,rst_r,valid,idx[11:0],a[7:0],w[7:0],done,res[31:0]" */;
+  input ap_clk;
+  input rst_r;
+  input valid;
+  input [11:0]idx;
+  input [7:0]a;
+  input [7:0]w;
+  output done;
+  output [31:0]res;
+endmodule
