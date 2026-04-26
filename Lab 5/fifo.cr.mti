@@ -1,0 +1,334 @@
+C:/Users/alsaad/Desktop/UVM/seq_item.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/seq_item.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package seq_item_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/seq_item.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/agent.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/agent.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package agent_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/agent.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/rd_ptr_empty.v {1 {vlog -work work -vopt -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/rd_ptr_empty.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module rd_ptr_empty
+
+Top level modules:
+	rd_ptr_empty
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/DD_SYN.v {1 {vlog -work work -vopt -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/DD_SYN.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module DD_SYN
+
+Top level modules:
+	DD_SYN
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/monitor.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/monitor.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package mon_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/monitor.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/seq_item.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/seq_item.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package seq_item_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/seq_item.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/FIFO_MEM.v {1 {vlog -work work -vopt -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/FIFO_MEM.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module FIFO_MEM
+
+Top level modules:
+	FIFO_MEM
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/sequence.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/sequence.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package sequence_pkg
+-- Importing package seq_item_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/sequence.sv(4): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/wrt_ptr_full.v {1 {vlog -work work -vopt -stats=none C:/Users/alsaad/Desktop/UVM/wrt_ptr_full.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module wrt_ptr_full
+
+Top level modules:
+	wrt_ptr_full
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/interface.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/interface.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling interface fifo_if
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/sequence.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/sequence.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package sequence_pkg
+-- Importing package seq_item_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/sequence.sv(4): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/top.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/top.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module top
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package test_pkg
+-- Importing package env_pkg
+-- Importing package agent_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+-- Importing package subscriber_pkg
+-- Importing package scoreboard_pkg
+-- Importing package sequence_pkg
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/top.sv(14): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	top
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/Compare_ptrs.v {1 {vlog -work work -vopt -stats=none C:/Users/alsaad/Desktop/UVM/Compare_ptrs.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Compare_ptrs
+
+Top level modules:
+	Compare_ptrs
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/scoreboard.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/scoreboard.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package scoreboard_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/scoreboard.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/FIFO_TOP.v {1 {vlog -work work -vopt -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/FIFO_TOP.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module FIFO_TOP
+
+Top level modules:
+	FIFO_TOP
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/sequencer.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/sequencer.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package sequencer_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/sequencer.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/environment.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/environment.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package env_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/environment.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package agent_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+-- Importing package subscriber_pkg
+-- Importing package scoreboard_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/scoreboard.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/scoreboard.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package scoreboard_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/scoreboard.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/subscriber.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/subscriber.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package subscriber_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/subscriber.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/rd_ptr_empty.v {1 {vlog -work work -vopt -stats=none C:/Users/alsaad/Desktop/UVM/rd_ptr_empty.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module rd_ptr_empty
+
+Top level modules:
+	rd_ptr_empty
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/DD_SYN.v {1 {vlog -work work -vopt -stats=none C:/Users/alsaad/Desktop/UVM/DD_SYN.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module DD_SYN
+
+Top level modules:
+	DD_SYN
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/FIFO_MEM.v {1 {vlog -work work -vopt -stats=none C:/Users/alsaad/Desktop/UVM/FIFO_MEM.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module FIFO_MEM
+
+Top level modules:
+	FIFO_MEM
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/test.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/test.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package test_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/test.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package env_pkg
+-- Importing package agent_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+-- Importing package subscriber_pkg
+-- Importing package scoreboard_pkg
+-- Importing package sequence_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/agent.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/agent.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package agent_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/agent.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/monitor.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/monitor.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package mon_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/monitor.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/wrt_ptr_full.v {1 {vlog -work work -vopt -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/wrt_ptr_full.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module wrt_ptr_full
+
+Top level modules:
+	wrt_ptr_full
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/FIFO_TOP.v {1 {vlog -work work -vopt -stats=none C:/Users/alsaad/Desktop/UVM/FIFO_TOP.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module FIFO_TOP
+
+Top level modules:
+	FIFO_TOP
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/sequencer.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/sequencer.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package sequencer_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/sequencer.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/alsaad/Desktop/UVM/driver.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/alsaad/Desktop/UVM/driver.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package driver_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/alsaad/Desktop/UVM/driver.sv(3): Using implicit +incdir+D:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/top.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/top.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module top
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package test_pkg
+-- Importing package env_pkg
+-- Importing package agent_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+-- Importing package subscriber_pkg
+-- Importing package scoreboard_pkg
+-- Importing package sequence_pkg
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/top.sv(14): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	top
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/driver.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/driver.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package driver_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/driver.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package seq_item_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/Compare_ptrs.v {1 {vlog -work work -vopt -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/Compare_ptrs.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Compare_ptrs
+
+Top level modules:
+	Compare_ptrs
+
+} {} {}} C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/environment.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/environment.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling package env_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) C:/Users/amrel/Desktop/GUC/Verification/UVM_MORA/UVM2/UVM/environment.sv(3): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package agent_pkg
+-- Importing package seq_item_pkg
+-- Importing package driver_pkg
+-- Importing package mon_pkg
+-- Importing package sequencer_pkg
+-- Importing package subscriber_pkg
+-- Importing package scoreboard_pkg
+
+Top level modules:
+	--none--
+
+} {} {}}
