@@ -1,0 +1,41 @@
+# Read the standard cell library
+read_liberty -lib /mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Read the Verilog design
+read_verilog k_lut_block.v
+
+# Elaborate the top module
+hierarchy -check -top k_lut_block
+
+# 1. Translate processes (always blocks) to basic netlists
+proc
+
+# 2. FLATTEN the design (Critical: exposes all submodule logic to the mapper)
+flatten
+
+# 3. Basic optimizations
+opt
+
+# REQUIREMENT: Show and export dot diagram BEFORE techmap, dfflibmap, and abc
+show -format dot -prefix k_lut_before_opt -colors 1 -width
+
+# 4. Map generic RTL to internal logic gates
+techmap
+opt
+
+# 5. Map flip-flops to the SKY130 library
+dfflibmap -liberty /mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+opt
+
+# 6. Map combinational logic to the SKY130 library
+abc -liberty /mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+opt
+
+# Cleanup unused cells and wires
+clean
+
+# REQUIREMENT: Show and export dot diagram AFTER optimization
+show -format dot -prefix k_lut_after_opt -colors 1 -width
+
+# Write the synthesized standard-cell netlist
+write_verilog -noattr k_lut_synth.v

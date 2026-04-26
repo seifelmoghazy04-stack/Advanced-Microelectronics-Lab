@@ -1,0 +1,28 @@
+Startpoint: f_sel[0] (input port clocked by clk)
+Endpoint: out (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock clk (rise edge)
+   0.0000    0.0000   clock network delay (ideal)
+   2.0000    2.0000 ^ input external delay
+   0.0000    2.0000 ^ f_sel[0] (in)
+   0.4633    2.4633 v _2_/X (sky130_fd_sc_hd__mux4_2)
+   0.1236    2.5870 v _4_/Y (sky130_fd_sc_hd__nor2b_1)
+   0.0000    2.5870 v out (out)
+             2.5870   data arrival time
+
+  10.0000   10.0000   clock clk (rise edge)
+   0.0000   10.0000   clock network delay (ideal)
+   0.0000   10.0000   clock reconvergence pessimism
+  -2.0000    8.0000   output external delay
+             8.0000   data required time
+-------------------------------------------------------------
+             8.0000   data required time
+            -2.5870   data arrival time
+-------------------------------------------------------------
+             5.4130   slack (MET)
+
+
