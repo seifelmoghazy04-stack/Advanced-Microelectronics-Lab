@@ -1,0 +1,473 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "k_lut_block"
+*DATE "17:09:09 Saturday April 25, 2026"
+*VENDOR "The OpenROAD Project"
+*PROGRAM "OpenROAD"
+*VERSION "dcf36133a369abc8f3c5e5738cd4d82e4903c0e0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*1 In_0
+*2 In_1
+*3 In_2
+*4 In_3
+*5 _0_
+*6 _1_
+*7 clk
+*8 dff_inst\.q
+*9 f_sel[0]
+*10 f_sel[1]
+*11 is_synced
+*12 out
+*13 sr_inst\.q[0]
+*14 sr_inst\.q[1]
+*15 sr_inst\.q[2]
+*16 sr_inst\.q[3]
+*19 clknet_0_clk
+*20 clknet_1_0__leaf_clk
+*21 clknet_1_1__leaf_clk
+*22 _2_
+*23 _3_
+*24 _4_
+*25 _5_
+*26 _6_
+*27 _7_
+*28 _8_
+*29 _9_
+*30 TAP_TAPCELL_ROW_0_0
+*31 TAP_TAPCELL_ROW_2_1
+*32 TAP_TAPCELL_ROW_4_2
+*33 TAP_TAPCELL_ROW_5_3
+*34 clkbuf_0_clk
+*35 clkbuf_1_0__f_clk
+*36 clkbuf_1_1__f_clk
+*37 clkload0
+*38 FILLER_0_0
+*39 FILLER_0_8
+*40 FILLER_0_10
+*41 FILLER_0_31
+*42 FILLER_1_0
+*43 FILLER_1_8
+*44 FILLER_1_12
+*45 FILLER_1_14
+*46 FILLER_1_34
+*47 FILLER_1_38
+*48 FILLER_2_0
+*49 FILLER_2_8
+*50 FILLER_2_36
+*51 FILLER_2_38
+*52 FILLER_3_0
+*53 FILLER_3_8
+*54 FILLER_3_34
+*55 FILLER_3_38
+*56 FILLER_4_0
+*57 FILLER_4_8
+*58 FILLER_4_12
+*59 FILLER_4_31
+*60 FILLER_5_0
+*61 FILLER_5_8
+*62 FILLER_5_10
+*63 FILLER_5_31
+
+*PORTS
+In_0 I
+In_1 I
+In_2 I
+In_3 I
+clk I
+out_ff O
+f_sel[0] I
+f_sel[1] I
+is_synced I
+out O
+
+*D_NET *1 0.00206739
+*CONN
+*P In_0 I
+*I *29:D I *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 In_0 0.00103369
+2 *29:D 0.00103369
+3 *29:D out 0
+4 *29:D out_ff 0
+5 *29:D *22:A0 0
+6 *29:D *24:A 0
+7 *29:D *26:D 0
+8 *29:D *11:9 0
+*RES
+1 In_0 *29:D 38.0533 
+*END
+
+*D_NET *2 0.00131607
+*CONN
+*P In_1 I
+*I *25:D I *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 In_1 0.000658037
+2 *25:D 0.000658037
+3 *25:D out_ff 0
+4 *25:D *22:A0 0
+5 *25:D *27:D 0
+6 *25:D *28:CLK 0
+7 *25:D *21:10 0
+*RES
+1 In_1 *25:D 23.7985 
+*END
+
+*D_NET *3 0.00147639
+*CONN
+*P In_2 I
+*I *26:D I *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 In_2 0.000738193
+2 *26:D 0.000738193
+3 *26:D *22:A1 0
+4 *26:D *22:A2 0
+5 *26:D *22:S0 0
+6 *26:D *22:S1 0
+7 *26:D *24:B_N 0
+8 *26:D *11:9 0
+9 *26:D *20:21 0
+10 *29:D *26:D 0
+*RES
+1 In_2 *26:D 29.3429 
+*END
+
+*D_NET *4 0.00130613
+*CONN
+*P In_3 I
+*I *27:D I *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 In_3 0.000653064
+2 *27:D 0.000653064
+3 *27:D out 0
+4 *27:D out_ff 0
+5 *27:D *22:A0 0
+6 *27:D *22:A2 0
+7 *27:D *22:A3 0
+8 *27:D *22:S0 0
+9 *27:D *22:S1 0
+10 *27:D *24:B_N 0
+11 *27:D *28:CLK 0
+12 *27:D *7:14 0
+13 *25:D *27:D 0
+*RES
+1 In_3 *27:D 24.9373 
+*END
+
+*D_NET *5 0.0011355
+*CONN
+*I *28:D I *D sky130_fd_sc_hd__dfxtp_1
+*I *23:X O *D sky130_fd_sc_hd__and2_0
+*CAP
+1 *28:D 0.000368775
+2 *23:X 0.000101178
+3 *5:10 0.000466572
+4 *5:8 0.000198974
+5 *28:D out 0
+6 *28:D out_ff 0
+7 *28:D *24:A 0
+*RES
+1 *23:X *5:8 20.7786 
+2 *5:8 *5:10 166.4 
+3 *5:10 *28:D 26.5687 
+*END
+
+*D_NET *6 0.00143947
+*CONN
+*I *23:B I *D sky130_fd_sc_hd__and2_0
+*I *24:B_N I *D sky130_fd_sc_hd__nor2b_1
+*I *22:X O *D sky130_fd_sc_hd__mux4_2
+*CAP
+1 *23:B 0.000142462
+2 *24:B_N 0.000577273
+3 *22:X 0
+4 *6:4 0.000719735
+5 *23:B *22:A1 0
+6 *23:B *22:S0 0
+7 *24:B_N *22:A2 0
+8 *24:B_N *22:A3 0
+9 *24:B_N *24:A 0
+10 *24:B_N *27:CLK 0
+11 *24:B_N *34:A 0
+12 *24:B_N *7:14 0
+13 *24:B_N *19:15 0
+14 *26:D *24:B_N 0
+15 *27:D *24:B_N 0
+*RES
+1 *22:X *6:4 9.3 
+2 *6:4 *24:B_N 39.7286 
+3 *6:4 *23:B 12.3357 
+*END
+
+*D_NET *7 0.00168686
+*CONN
+*P clk I
+*I *34:A I *D sky130_fd_sc_hd__clkbuf_1
+*CAP
+1 clk 0.000748456
+2 *34:A 9.49745e-05
+3 *7:14 0.00084343
+4 *7:14 *22:A3 0
+5 *7:14 *22:S1 0
+6 *7:14 *11:9 0
+7 *7:14 *19:15 0
+8 *24:B_N *34:A 0
+9 *24:B_N *7:14 0
+10 *27:D *7:14 0
+*RES
+1 clk *7:14 9.92363 
+2 *7:14 *34:A 15.7821 
+*END
+
+*D_NET *8 0.000547197
+*CONN
+*P out_ff O
+*I *28:Q O *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 out_ff 0.000273598
+2 *28:Q 0.000273598
+3 out_ff out 0
+4 out_ff *22:A0 0
+5 out_ff *22:A1 0
+6 *25:D out_ff 0
+7 *27:D out_ff 0
+8 *28:D out_ff 0
+9 *29:D out_ff 0
+*RES
+1 *28:Q out_ff 20.7466 
+*END
+
+*D_NET *9 0.000804792
+*CONN
+*P f_sel[0] I
+*I *22:S0 I *D sky130_fd_sc_hd__mux4_2
+*CAP
+1 f_sel[0] 0.000402396
+2 *22:S0 0.000402396
+3 *22:S0 *22:A1 0
+4 *22:S0 *22:S1 0
+5 *22:S0 *24:A 0
+6 *23:B *22:S0 0
+7 *26:D *22:S0 0
+8 *27:D *22:S0 0
+*RES
+1 f_sel[0] *22:S0 12.3694 
+*END
+
+*D_NET *10 0.00107955
+*CONN
+*P f_sel[1] I
+*I *22:S1 I *D sky130_fd_sc_hd__mux4_2
+*CAP
+1 f_sel[1] 0.000539777
+2 *22:S1 0.000539777
+3 *22:S1 *22:A1 0
+4 *22:S1 *22:A2 0
+5 *22:S0 *22:S1 0
+6 *26:D *22:S1 0
+7 *27:D *22:S1 0
+8 *7:14 *22:S1 0
+*RES
+1 f_sel[1] *22:S1 21.5613 
+*END
+
+*D_NET *11 0.001729
+*CONN
+*P is_synced I
+*I *24:A I *D sky130_fd_sc_hd__nor2b_1
+*I *23:A I *D sky130_fd_sc_hd__and2_0
+*CAP
+1 is_synced 0.000354704
+2 *24:A 0.000484126
+3 *23:A 2.56688e-05
+4 *11:9 0.0008645
+5 *24:A out 0
+6 *24:A *22:A1 0
+7 *24:A *28:CLK 0
+8 *22:S0 *24:A 0
+9 *24:B_N *24:A 0
+10 *26:D *11:9 0
+11 *28:D *24:A 0
+12 *29:D *24:A 0
+13 *29:D *11:9 0
+14 *7:14 *11:9 0
+*RES
+1 is_synced *11:9 7.73421 
+2 *11:9 *23:A 14.3357 
+3 *11:9 *24:A 24.1929 
+*END
+
+*D_NET *12 0.00120316
+*CONN
+*P out O
+*I *24:Y O *D sky130_fd_sc_hd__nor2b_1
+*CAP
+1 out 0.000601581
+2 *24:Y 0.000601581
+3 out *22:A1 0
+4 out *28:CLK 0
+5 out_ff out 0
+6 *24:A out 0
+7 *27:D out 0
+8 *28:D out 0
+9 *29:D out 0
+*RES
+1 *24:Y out 27.9602 
+*END
+
+*D_NET *13 0.000756092
+*CONN
+*I *22:A0 I *D sky130_fd_sc_hd__mux4_2
+*I *29:Q O *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 *22:A0 0.000378046
+2 *29:Q 0.000378046
+3 *22:A0 *22:A1 0
+4 out_ff *22:A0 0
+5 *25:D *22:A0 0
+6 *27:D *22:A0 0
+7 *29:D *22:A0 0
+*RES
+1 *29:Q *22:A0 36.0643 
+*END
+
+*D_NET *14 0.000672889
+*CONN
+*I *22:A1 I *D sky130_fd_sc_hd__mux4_2
+*I *25:Q O *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 *22:A1 0.000336445
+2 *25:Q 0.000336445
+3 *22:A1 *22:A2 0
+4 out *22:A1 0
+5 out_ff *22:A1 0
+6 *22:A0 *22:A1 0
+7 *22:S0 *22:A1 0
+8 *22:S1 *22:A1 0
+9 *23:B *22:A1 0
+10 *24:A *22:A1 0
+11 *26:D *22:A1 0
+*RES
+1 *25:Q *22:A1 34.975 
+*END
+
+*D_NET *15 0.000919434
+*CONN
+*I *22:A2 I *D sky130_fd_sc_hd__mux4_2
+*I *26:Q O *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 *22:A2 0.000459717
+2 *26:Q 0.000459717
+3 *22:A2 *20:21 0
+4 *22:A1 *22:A2 0
+5 *22:S1 *22:A2 0
+6 *24:B_N *22:A2 0
+7 *26:D *22:A2 0
+8 *27:D *22:A2 0
+*RES
+1 *26:Q *22:A2 37.475 
+*END
+
+*D_NET *16 0.000759659
+*CONN
+*I *22:A3 I *D sky130_fd_sc_hd__mux4_2
+*I *27:Q O *D sky130_fd_sc_hd__dfxtp_1
+*CAP
+1 *22:A3 0.00037983
+2 *27:Q 0.00037983
+3 *24:B_N *22:A3 0
+4 *27:D *22:A3 0
+5 *7:14 *22:A3 0
+*RES
+1 *27:Q *22:A3 35.6357 
+*END
+
+*D_NET *19 0.00138148
+*CONN
+*I *36:A I *D sky130_fd_sc_hd__clkbuf_1
+*I *35:A I *D sky130_fd_sc_hd__clkbuf_1
+*I *34:X O *D sky130_fd_sc_hd__clkbuf_1
+*CAP
+1 *36:A 4.53482e-05
+2 *35:A 4.53482e-05
+3 *34:X 0
+4 *19:33 0.000309022
+5 *19:15 0.000381717
+6 *19:6 0.000600042
+7 *35:A *20:6 0
+8 *36:A *21:6 0
+9 *19:15 *20:21 0
+10 *19:33 *28:CLK 0
+11 *19:33 *21:10 0
+12 *24:B_N *19:15 0
+13 *7:14 *19:15 0
+*RES
+1 *34:X *19:6 13.8 
+2 *19:6 *19:15 7.76786 
+3 *19:15 *35:A 14.7464 
+4 *19:6 *19:33 6.25 
+5 *19:33 *36:A 14.7464 
+*END
+
+*D_NET *20 0.000547083
+*CONN
+*I *27:CLK I *D sky130_fd_sc_hd__dfxtp_1
+*I *37:A I *D sky130_fd_sc_hd__clkbuf_1
+*I *26:CLK I *D sky130_fd_sc_hd__dfxtp_1
+*I *35:X O *D sky130_fd_sc_hd__clkbuf_1
+*CAP
+1 *27:CLK 2.56688e-05
+2 *37:A 0
+3 *26:CLK 3.50807e-05
+4 *35:X 6.50276e-05
+5 *20:21 0.000173433
+6 *20:6 0.000247873
+7 *22:A2 *20:21 0
+8 *24:B_N *27:CLK 0
+9 *26:D *20:21 0
+10 *35:A *20:6 0
+11 *19:15 *20:21 0
+*RES
+1 *35:X *20:6 10.6571 
+2 *20:6 *26:CLK 10.0321 
+3 *20:6 *20:21 12.3036 
+4 *20:21 *37:A 9.3 
+5 *20:21 *27:CLK 9.83571 
+*END
+
+*D_NET *21 0.000760535
+*CONN
+*I *29:CLK I *D sky130_fd_sc_hd__dfxtp_1
+*I *25:CLK I *D sky130_fd_sc_hd__dfxtp_1
+*I *28:CLK I *D sky130_fd_sc_hd__dfxtp_1
+*I *36:X O *D sky130_fd_sc_hd__clkbuf_1
+*CAP
+1 *29:CLK 3.50807e-05
+2 *25:CLK 0
+3 *28:CLK 0.00019718
+4 *36:X 6.50276e-05
+5 *21:10 0.000280159
+6 *21:6 0.000183087
+7 out *28:CLK 0
+8 *24:A *28:CLK 0
+9 *25:D *28:CLK 0
+10 *25:D *21:10 0
+11 *27:D *28:CLK 0
+12 *36:A *21:6 0
+13 *19:33 *28:CLK 0
+14 *19:33 *21:10 0
+*RES
+1 *36:X *21:6 10.6571 
+2 *21:6 *21:10 6.44643 
+3 *21:10 *28:CLK 18.1214 
+4 *21:10 *25:CLK 13.8 
+5 *21:6 *29:CLK 10.0321 
+*END
