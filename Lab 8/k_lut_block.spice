@@ -1,0 +1,45 @@
+SPICE deck for cell k_lut_block written by Netgen 1.5.316
+
+#   1 = VSS
+#   2 = VDD
+#   3 = \sr_inst.q [0]
+#   4 = \sr_inst.q [1]
+#   5 = \sr_inst.q [2]
+#   6 = \sr_inst.q [3]
+#   7 = f_sel[0]
+#   8 = f_sel[1]
+#   9 = _1_
+#  10 = is_synced
+#  11 = _0_
+#  12 = out
+#  13 = clknet_1_1__leaf_clk
+#  14 = In_1
+#  15 = clknet_1_0__leaf_clk
+#  16 = In_2
+#  17 = In_3
+#  18 = out_ff
+#  19 = In_0
+#  20 = clk
+#  21 = clknet_0_clk
+#  22 = _noconnect_1_
+XFILLER_0_0 FILLER_0_10/(no pins) FILLER_0_31/(no pins) FILLER_0_8/(no pins)
+      FILLER_1_0/(no pins) FILLER_1_12/(no pins) FILLER_1_14/(no pins)
+      FILLER_1_34/(no pins) FILLER_1_38/(no pins) FILLER_1_8/(no pins)
+      FILLER_2_0/(no pins) FILLER_2_36/(no pins) FILLER_2_38/(no pins)
+      FILLER_2_8/(no pins) FILLER_3_0/(no pins) FILLER_3_34/(no pins)
+      FILLER_3_38/(no pins) FILLER_3_8/(no pins) FILLER_4_0/(no pins)
+      FILLER_4_12/(no pins) FILLER_4_31/(no pins) FILLER_4_8/(no pins)
+      FILLER_5_0/(no pins) FILLER_5_10/(no pins) FILLER_5_31/(no pins)
+      FILLER_5_8/(no pins) TAP_TAPCELL_ROW_0_0/VGND TAP_TAPCELL_ROW_0_0/VPWR
+      TAP_TAPCELL_ROW_2_1/VGND TAP_TAPCELL_ROW_2_1/VPWR
+      TAP_TAPCELL_ROW_4_2/VGND TAP_TAPCELL_ROW_4_2/VPWR
+      TAP_TAPCELL_ROW_5_3/VGND TAP_TAPCELL_ROW_5_3/VPWR _2_/A0 _2_/A1 _2_/A2
+      _2_/A3 _2_/S0 _2_/S1 _2_/VGND _2_/VNB _2_/VPB _2_/VPWR _2_/X _3_/A _3_/B
+      _3_/VGND _3_/VNB _3_/VPB _3_/VPWR _3_/X _4_/A _4_/B_N _4_/VGND _4_/VNB
+      _4_/VPB _4_/VPWR _4_/Y _5_/CLK _5_/D _5_/VGND _5_/VNB _5_/VPB _5_/VPWR
+      _5_/Q _6_/CLK _6_/D _6_/VGND _6_/VNB _6_/VPB _6_/VPWR _6_/Q _7_/CLK _7_/D
+      _7_/VGND _7_/VNB _7_/VPB _7_/VPWR _7_/Q _8_/CLK _8_/D _8_/VGND _8_/VNB
+      _8_/VPB _8_/VPWR _8_/Q _9_/CLK _9_/D _9_/VGND _9_/VNB _9_/VPB _9_/VPWR
+      _9_/Q clkbuf_0_clk/A clkbuf_0_clk/X clkbuf_1_0__f_clk/A
+      clkbuf_1_0__f_clk/X clkbuf_1_1__f_clk/A clkbuf_1_1__f_clk/X clkload0/A
+      clkload0/X sky130_fd_sc_hd__fill_8

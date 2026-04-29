@@ -1,0 +1,31 @@
+# Start Magic with the SKY130 tech
+magic -T sky130A -d XR
+
+# In the tkcon shell:
+lef read $STD/lef/sky130_fd_sc_hd.lef
+gds read $STD/gds/sky130_fd_sc_hd.gds
+def read pnr/top.def
+load top
+gds write verify/top.gds
+
+# After loading top.gds (slide 6)
+load top
+drc style drc(full)   ;# include density + antenna
+drc check
+drc count             ;# total errors
+drc listall why  reports/top.drc.rpt
+
+# Jump to a specific violation
+drc find
+select area
+drc why               ;# explain the rule
+
+
+klayout -b \
+  -r $PDK_ROOT/sky130A/libs.tech/klayout/drc/sky130A.lydrc \
+  -rd input=verify/top.gds \
+  -rd report=reports/top.lyrdb \
+  -rd thr=4
+
+klayout verify/top.gds \
+        -m reports/top.lyrdb

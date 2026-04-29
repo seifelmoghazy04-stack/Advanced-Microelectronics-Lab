@@ -1,0 +1,88 @@
+* NGSPICE file created from k_lut_block.ext - technology: sky130A
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_4 abstract view
+.subckt sky130_fd_sc_hd__fill_4 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_8 abstract view
+.subckt sky130_fd_sc_hd__fill_8 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_2 abstract view
+.subckt sky130_fd_sc_hd__fill_2 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_1 abstract view
+.subckt sky130_fd_sc_hd__fill_1 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_1 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_1 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__tapvpwrvgnd_1 abstract view
+.subckt sky130_fd_sc_hd__tapvpwrvgnd_1 VGND VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__dfxtp_1 abstract view
+.subckt sky130_fd_sc_hd__dfxtp_1 CLK D VGND VNB VPB VPWR Q
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__nor2b_1 abstract view
+.subckt sky130_fd_sc_hd__nor2b_1 A B_N VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__and2_0 abstract view
+.subckt sky130_fd_sc_hd__and2_0 A B VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__mux4_2 abstract view
+.subckt sky130_fd_sc_hd__mux4_2 A0 A1 A2 A3 S0 S1 VGND VNB VPB VPWR X
+.ends
+
+.subckt k_lut_block In_0 In_1 In_2 In_3 VDD VSS clk f_sel[0] f_sel[1] is_synced out
++ out_ff
+XFILLER_3_34 VSS VSS VDD VDD sky130_fd_sc_hd__fill_4
+XFILLER_1_0 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+XFILLER_5_8 VSS VSS VDD VDD sky130_fd_sc_hd__fill_2
+XFILLER_3_38 VSS VSS VDD VDD sky130_fd_sc_hd__fill_1
+Xclkload0 _7_/CLK VSS VSS VDD VDD clkload0/X sky130_fd_sc_hd__clkbuf_1
+XFILLER_3_8 VSS VSS VDD VDD sky130_fd_sc_hd__fill_2
+Xclkbuf_0_clk clk VSS VSS VDD VDD clkbuf_0_clk/X sky130_fd_sc_hd__clkbuf_1
+XTAP_TAPCELL_ROW_4_2 VSS VDD sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_4_31 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+XFILLER_1_8 VSS VSS VDD VDD sky130_fd_sc_hd__fill_4
+XFILLER_4_12 VSS VSS VDD VDD sky130_fd_sc_hd__fill_2
+XTAP_TAPCELL_ROW_2_1 VSS VDD sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_1_34 VSS VSS VDD VDD sky130_fd_sc_hd__fill_4
+XFILLER_1_12 VSS VSS VDD VDD sky130_fd_sc_hd__fill_2
+X_9_ _9_/CLK In_0 VSS VSS VDD VDD _9_/Q sky130_fd_sc_hd__dfxtp_1
+X_8_ _9_/CLK _8_/D VSS VSS VDD VDD out_ff sky130_fd_sc_hd__dfxtp_1
+XTAP_TAPCELL_ROW_0_0 VSS VDD sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_1_14 VSS VSS VDD VDD sky130_fd_sc_hd__fill_1
+XFILLER_1_38 VSS VSS VDD VDD sky130_fd_sc_hd__fill_1
+X_7_ _7_/CLK In_3 VSS VSS VDD VDD _7_/Q sky130_fd_sc_hd__dfxtp_1
+X_5_ _9_/CLK In_1 VSS VSS VDD VDD _5_/Q sky130_fd_sc_hd__dfxtp_1
+XFILLER_4_0 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+X_6_ _7_/CLK In_2 VSS VSS VDD VDD _6_/Q sky130_fd_sc_hd__dfxtp_1
+X_4_ is_synced _3_/B VSS VSS VDD VDD out sky130_fd_sc_hd__nor2b_1
+X_3_ is_synced _3_/B VSS VSS VDD VDD _8_/D sky130_fd_sc_hd__and2_0
+XFILLER_2_0 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+X_2_ _9_/Q _5_/Q _6_/Q _7_/Q f_sel[0] f_sel[1] VSS VSS VDD VDD _3_/B sky130_fd_sc_hd__mux4_2
+Xclkbuf_1_0__f_clk clkbuf_0_clk/X VSS VSS VDD VDD _7_/CLK sky130_fd_sc_hd__clkbuf_1
+XFILLER_5_31 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+XFILLER_0_0 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+XFILLER_5_10 VSS VSS VDD VDD sky130_fd_sc_hd__fill_1
+XFILLER_4_8 VSS VSS VDD VDD sky130_fd_sc_hd__fill_4
+Xclkbuf_1_1__f_clk clkbuf_0_clk/X VSS VSS VDD VDD _9_/CLK sky130_fd_sc_hd__clkbuf_1
+XFILLER_2_36 VSS VSS VDD VDD sky130_fd_sc_hd__fill_2
+XTAP_TAPCELL_ROW_5_3 VSS VDD sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_2_38 VSS VSS VDD VDD sky130_fd_sc_hd__fill_1
+XFILLER_2_8 VSS VSS VDD VDD sky130_fd_sc_hd__fill_4
+XFILLER_0_8 VSS VSS VDD VDD sky130_fd_sc_hd__fill_2
+XFILLER_5_0 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+XFILLER_0_31 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+XFILLER_0_10 VSS VSS VDD VDD sky130_fd_sc_hd__fill_1
+XFILLER_3_0 VSS VSS VDD VDD sky130_fd_sc_hd__fill_8
+.ends
+

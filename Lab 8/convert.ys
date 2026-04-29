@@ -1,0 +1,8 @@
+# 1. Read the OpenROAD Verilog netlist
+read_verilog ../Lab07/final.v
+
+# 2. Tell Yosys which module is the top level
+hierarchy -top k_lut_block
+
+# 3. Export to SPICE
+write_spice yosys_schematic.spice
