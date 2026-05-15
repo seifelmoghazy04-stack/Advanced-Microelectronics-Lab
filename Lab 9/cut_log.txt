@@ -1,0 +1,3 @@
+Generating LALR tables
+WARNING: 183 shift/reduce conflicts
+[Warning]: Failed to detect any flip-flop cells.

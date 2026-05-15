@@ -1,0 +1,4 @@
+Error: Missing expected argument '--clock <clock>'
+Help:  --clock <clock>  Clock name. In addition to being bypassed for certain manipulation operations, during simulations it will always be held high.
+Usage: fault chain [<options>] --liberty <liberty> --clock <clock> <file>
+  See 'fault chain --help' for more information.

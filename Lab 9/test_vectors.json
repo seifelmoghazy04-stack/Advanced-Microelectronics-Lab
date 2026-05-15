@@ -1,0 +1,104 @@
+{
+  "coverageList" : [
+    {
+      "coverage" : {
+        "sa0" : [
+          "_4_.A",
+          "_3_.A",
+          "is_synced"
+        ],
+        "sa1" : [
+          "_4_.Y",
+          "out"
+        ]
+      },
+      "vector" : [
+        [
+          "+",
+          1
+        ],
+        [
+          "+",
+          1
+        ],
+        [
+          "+",
+          1
+        ],
+        [
+          "+",
+          1
+        ],
+        [
+          "+",
+          2
+        ],
+        [
+          "+",
+          1
+        ]
+      ],
+      "goldenOutput" : ""
+    }
+  ],
+  "outputs" : [
+    {
+      "polarity" : "output",
+      "from" : 0,
+      "ordinal" : 7,
+      "to" : 0,
+      "name" : "out"
+    },
+    {
+      "polarity" : "output",
+      "from" : 0,
+      "ordinal" : 8,
+      "to" : 0,
+      "name" : "out_ff"
+    }
+  ],
+  "inputs" : [
+    {
+      "polarity" : "input",
+      "from" : 0,
+      "ordinal" : 0,
+      "to" : 0,
+      "name" : "In_0"
+    },
+    {
+      "polarity" : "input",
+      "from" : 0,
+      "ordinal" : 1,
+      "to" : 0,
+      "name" : "In_1"
+    },
+    {
+      "polarity" : "input",
+      "from" : 0,
+      "ordinal" : 2,
+      "to" : 0,
+      "name" : "In_2"
+    },
+    {
+      "polarity" : "input",
+      "from" : 0,
+      "ordinal" : 3,
+      "to" : 0,
+      "name" : "In_3"
+    },
+    {
+      "polarity" : "input",
+      "from" : 1,
+      "ordinal" : 4,
+      "to" : 0,
+      "name" : "f_sel"
+    },
+    {
+      "polarity" : "input",
+      "from" : 0,
+      "ordinal" : 5,
+      "to" : 0,
+      "name" : "is_synced"
+    }
+  ]
+}
